@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shop/core/cache/cache_helper.dart';
+import 'package:shop/core/cache/cache_keys.dart';
+import 'package:shop/core/router/app_router_keys.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/features/onboarding/models/onboarding_data_model.dart';
@@ -14,7 +18,10 @@ class SkipPage extends StatelessWidget {
       child: Visibility(
         visible: currentPage < pages.length - 1,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            CacheHelper.setValue(CacheKeys.onboardingDone, true);
+            GoRouter.of(context).pushReplacement(AppRouterKeys.authScreen);
+          },
           child: Text(
             'Skip',
             style: AppTextStyles.textStyle18.copyWith(

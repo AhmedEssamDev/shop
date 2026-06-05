@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shop/core/cache/cache_helper.dart';
 import 'package:shop/core/router/app_router.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CacheHelper.init();
   runApp(const MyApp());
 }
 
@@ -16,12 +19,11 @@ class MyApp extends StatelessWidget {
       designSize: Size(375, 812),
       builder: (context, child) {
         return MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        title: 'shop',
-        routerConfig: AppRouter.appRouter,
+          debugShowCheckedModeBanner: false,
+          title: 'shop',
+          routerConfig: AppRouter.appRouter,
         );
       },
     );
   }
 }
-
