@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
+import 'package:shop/core/widgets/custom_button.dart';
 
 class GradientContainer extends StatelessWidget {
   const GradientContainer({super.key});
@@ -37,6 +38,25 @@ class GradientContainer extends StatelessWidget {
             ),
           ),
           SizedBox(height: 24.h),
+          CustomButton(
+            onPressed: () {
+              
+            },
+            width: 279.w,
+            backgroundColor: AppColors.primary,
+            textColor: AppColors.white,
+            text: 'Login',
+          ),
+          SizedBox(height: 15.h),
+          CustomButton(
+            onPressed: () {
+
+            },
+            width: 279.w,
+            backgroundColor: AppColors.white,
+            textColor: AppColors.primary,
+            text: 'Register',
+          ),
         ],
       ),
     );
