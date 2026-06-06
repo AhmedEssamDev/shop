@@ -15,6 +15,7 @@ class AuthScreenView extends StatelessWidget {
         ),
       ),
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         body: const AuthScreenViewBody(),
       ),
     );
