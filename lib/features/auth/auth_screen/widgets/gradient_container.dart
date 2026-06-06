@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shop/core/router/app_router_keys.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/core/widgets/custom_button.dart';
@@ -40,7 +42,7 @@ class GradientContainer extends StatelessWidget {
           SizedBox(height: 24.h),
           CustomButton(
             onPressed: () {
-              
+              GoRouter.of(context).push(AppRouterKeys.login);
             },
             width: 279.w,
             backgroundColor: AppColors.primary,
@@ -50,7 +52,7 @@ class GradientContainer extends StatelessWidget {
           SizedBox(height: 15.h),
           CustomButton(
             onPressed: () {
-
+              GoRouter.of(context).push(AppRouterKeys.register);
             },
             width: 279.w,
             backgroundColor: AppColors.white,

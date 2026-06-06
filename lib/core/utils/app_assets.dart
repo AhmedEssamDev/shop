@@ -11,6 +11,12 @@ abstract class AppSvgs {
   static const String onboarding2 = '${basePath}onboarding2.svg';
   static const String onboarding3 = '${basePath}onboarding3.svg';
   static const String home = '${basePath}home.svg';
+  static const String back = '${basePath}back.svg';
+  static const String email = '${basePath}email.svg';
+  static const String password = '${basePath}password.svg';
+  static const String person = '${basePath}person.svg';
+  static const String phone = '${basePath}phone.svg';
+  static const String profile = '${basePath}profile.svg';
 }
 
 

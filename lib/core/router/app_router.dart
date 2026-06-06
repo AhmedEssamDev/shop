@@ -3,6 +3,8 @@ import 'package:shop/core/cache/cache_helper.dart';
 import 'package:shop/core/cache/cache_keys.dart';
 import 'package:shop/core/router/app_router_keys.dart';
 import 'package:shop/features/auth/auth_screen/auth_screen_view.dart';
+import 'package:shop/features/auth/login/presentation/views/login_view.dart';
+import 'package:shop/features/auth/register/presentation/views/Register_view.dart';
 import 'package:shop/features/onboarding/onboarding_screen_view.dart';
 
 abstract class AppRouter {
@@ -21,6 +23,14 @@ abstract class AppRouter {
       GoRoute(
         path: '/auth',
         builder: (context, state) => AuthScreenView()
+      ),
+      GoRoute(
+        path: '/login',
+        builder: (context, state) => LoginView()
+      ),
+      GoRoute(
+        path: '/register',
+        builder: (context, state) => RegisterView()
       ),
     ]
    );
