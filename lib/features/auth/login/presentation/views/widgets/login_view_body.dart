@@ -28,9 +28,9 @@ class LoginViewBody extends StatelessWidget {
               SizedBox(height: 42.h),
               Text('Welcome\nBack!', style: AppTextStyles.textStyle34),
               SizedBox(height: 45.h),
-              CustomTextField(),
+              // CustomTextField(),
               SizedBox(height: 22.h),
-              CustomTextField(),
+              // CustomTextField(),
               SizedBox(height: 56.h),
              CustomButton(
                 width: 317.w,

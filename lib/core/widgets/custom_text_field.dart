@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:shop/core/utils/app_assets.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key});
+  const CustomTextField({super.key, required this.validator,
+   required this.controller, required this.keyboardType,
+   required this.obscureText, required this.hintText,
+   required this.prefixIcon,  this.suffixIcon});
 
-  // final String? Function(String?) validator;
-  // final TextEditingController controller;
-  // final TextInputType keyboardType;
-  // final bool obscureText;
-  // final String hintText;
-  // final Widget prefixIcon;
-  // final Widget suffixIcon;
+  final String? Function(String?) validator;
+  final TextEditingController controller;
+  final TextInputType keyboardType;
+  final bool obscureText;
+  final String hintText;
+  final Widget prefixIcon;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: (value) {},
-      controller: null,
-      keyboardType: TextInputType.text,
-      obscureText: false,
+      validator: validator,
+      controller: controller,
+      keyboardType: keyboardType,
+      obscureText: obscureText,
       cursorColor: AppColors.borderColor,
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
@@ -39,21 +40,18 @@ class CustomTextField extends StatelessWidget {
         ),
         prefixIcon: Padding(
           padding: REdgeInsetsDirectional.only(
-            start: 16,
-            end: 8,
-            top: 12,
-            bottom: 12,
+            start: 20,
+            end: 12,
+            top: 16,
+            bottom: 16,
           ),
-          child: SvgPicture.asset(AppSvgs.email),
+          child: prefixIcon,
         ),
-        suffixIcon: Icon(
-          Icons.visibility_off,
-          color: AppColors.borderColor,
-          size: 24.sp,
-        ),
+        suffixIcon:suffixIcon,
         fillColor: AppColors.fieldColor,
         filled: true,
-        hintText: 'Email',
+        hintText: hintText,
+        hintMaxLines: 1,
         hintStyle: AppTextStyles.textStyle12.copyWith(
           color: AppColors.nameFieldColor,
         ),

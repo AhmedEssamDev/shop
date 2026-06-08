@@ -1,9 +1,13 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shop/core/cache/cache_helper.dart';
 import 'package:shop/core/cache/cache_keys.dart';
+import 'package:shop/core/network/api_helper.dart';
 import 'package:shop/core/router/app_router_keys.dart';
 import 'package:shop/features/auth/auth_screen/auth_screen_view.dart';
 import 'package:shop/features/auth/login/presentation/views/login_view.dart';
+import 'package:shop/features/auth/register/data/repo/register_repo_impl.dart';
+import 'package:shop/features/auth/register/presentation/manger/cubit/register_cubit.dart';
 import 'package:shop/features/auth/register/presentation/views/Register_view.dart';
 import 'package:shop/features/onboarding/onboarding_screen_view.dart';
 
@@ -30,8 +34,12 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: '/register',
-        builder: (context, state) => RegisterView()
-      ),
+        builder: (context, state) => BlocProvider(create: (context) {
+          return RegisterCubit(registerRepo: RegisterRepoImpl(ApiHelper()),
+          );
+        },
+        child: const RegisterView()
+       ) ),
     ]
    );
 }
