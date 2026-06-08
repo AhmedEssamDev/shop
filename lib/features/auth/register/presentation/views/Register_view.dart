@@ -7,9 +7,14 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(
-      backgroundColor: AppColors.white,
-      body: const RegisterViewBody()));
+    return SafeArea(child: GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        backgroundColor: AppColors.white,
+        body: const RegisterViewBody()),
+    ));
   }
 }
 

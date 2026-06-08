@@ -17,37 +17,39 @@ class RegisterViewBody extends StatelessWidget {
     return Padding(
       padding: REdgeInsets.symmetric(horizontal: 32, vertical: 20),
       child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GestureDetector(
-              onTap: () {
-                GoRouter.of(context).pop();
-              },
-              child: SvgPicture.asset(AppSvgs.back)),
-            SizedBox(height: 39.h),
-            Text('Create an\naccount!', style: AppTextStyles.textStyle34),
-            SizedBox(height: 33.h),
-            CustomTextField(),
-            SizedBox(height: 10.h),
-            CustomTextField(),
-            SizedBox(height: 10.h),
-            CustomTextField(),
-            SizedBox(height: 10.h),
-            CustomTextField(),
-            SizedBox(height: 10.h),
-            CustomTextField(),
-            SizedBox(height: 21.h),
-            RichTextWidget(),
-            SizedBox(height: 28.h),
-           CustomButton(
-              width: 317.w,
-              backgroundColor: AppColors.primary,
-              textColor: AppColors.white,
-              onPressed: () {},
-              text: 'Create Account',
-            ),
-          ],
+        child: Form(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  GoRouter.of(context).pop();
+                },
+                child: SvgPicture.asset(AppSvgs.back)),
+              SizedBox(height: 39.h),
+              Text('Create an\naccount!', style: AppTextStyles.textStyle34),
+              SizedBox(height: 33.h),
+              CustomTextField(),
+              SizedBox(height: 10.h),
+              CustomTextField(),
+              SizedBox(height: 10.h),
+              CustomTextField(),
+              SizedBox(height: 10.h),
+              CustomTextField(),
+              SizedBox(height: 10.h),
+              CustomTextField(),
+              SizedBox(height: 21.h),
+              RichTextWidget(),
+              SizedBox(height: 28.h),
+             CustomButton(
+                width: 317.w,
+                backgroundColor: AppColors.primary,
+                textColor: AppColors.white,
+                onPressed: () {},
+                text: 'Create Account',
+              ),
+            ],
+          ),
         ),
       ),
     );
