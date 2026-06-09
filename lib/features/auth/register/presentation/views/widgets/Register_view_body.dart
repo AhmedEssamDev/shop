@@ -9,6 +9,7 @@ import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/core/utils/app_validators.dart';
 import 'package:shop/core/widgets/custom_button.dart';
+import 'package:shop/core/widgets/custom_snack_bar.dart';
 import 'package:shop/core/widgets/custom_text_field.dart';
 import 'package:shop/features/auth/register/presentation/manger/cubit/register_cubit.dart';
 import 'package:shop/features/auth/register/presentation/views/widgets/rich_text.dart';
@@ -21,25 +22,9 @@ class RegisterViewBody extends StatelessWidget {
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if (state is RegisterFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                state.message,
-                style: TextStyle(color: AppColors.backgroundColor),
-              ),
-              backgroundColor: AppColors.error,
-            ),
-          );
+          AppNotifications.showError(context, state.message);
         } else if (state is RegisterSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'register_success',
-                style: TextStyle(color: AppColors.backgroundColor),
-              ),
-              backgroundColor: AppColors.success,
-            ),
-          );
+          AppNotifications.showSuccess(context, state.message);
           context.go(AppRouterKeys.login);
         }
       },

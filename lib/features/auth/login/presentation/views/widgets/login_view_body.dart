@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shop/core/router/app_router_keys.dart';
 import 'package:shop/core/utils/app_assets.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
@@ -22,7 +23,7 @@ class LoginViewBody extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  GoRouter.of(context).pop();
+                  GoRouter.of(context).pushReplacement(AppRouterKeys.authScreen);
                 },
                 child: SvgPicture.asset(AppSvgs.back)),
               SizedBox(height: 42.h),
