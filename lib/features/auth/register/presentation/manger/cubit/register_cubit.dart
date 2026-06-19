@@ -16,22 +16,18 @@ class RegisterCubit extends Cubit<RegisterState> {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   final phoneController = TextEditingController();
-  bool isPassword = true;
-  void PasswordVisibility(){
-    isPassword = !isPassword;
+  bool isPassword1 = true;
+  bool isPassword2 = true;
+  void PasswordVisibility1(){
+    isPassword1 = !isPassword1;
     emit(ChangePasswordVisibility());
-
+  }void PasswordVisibility2(){
+    isPassword2 = !isPassword2;
+    emit(ChangePasswordVisibility());
   }
   Future register() async {
-    print("--- Debugging Register Data ---");
-  print("Name: ${nameController.text}");
-  print("Phone: ${phoneController.text}");
-  print("Email: ${emailController.text}");
-  print("Password: ${passwordController.text}");
-  print("Confirm Password: ${confirmPasswordController.text}");
-  print("-------------------------------");
-    emit(RegisterLoading());
     if (formKey.currentState!.validate() == false) return;
+    emit(RegisterLoading());
     var result = await registerRepo.register(
       name: nameController.text,
       email: emailController.text,

@@ -82,22 +82,21 @@ class RegisterViewBody extends StatelessWidget {
                   SizedBox(height: 10.h),
                   CustomTextField(
                     validator: (String? p1) {
-                      return AppValidators.requiredValidator(
-                        p1 ?? '',
-                        'password',
+                      return AppValidators.passwordValidator(
+                       p1 ?? '',
                       );
                     },
                     controller: cubit.passwordController,
                     keyboardType: TextInputType.visiblePassword,
-                    obscureText: true,
+                    obscureText: cubit.isPassword1,
                     hintText: 'Password',
                     prefixIcon: SvgPicture.asset(AppSvgs.password),
                     suffixIcon: GestureDetector(
                       onTap: () {
-                        cubit.PasswordVisibility();
+                        cubit.PasswordVisibility1();
                       },
                       child: Icon(
-                        cubit.isPassword
+                        cubit.isPassword1
                             ? Icons.visibility_off
                             : Icons.visibility,
                       ),
@@ -107,22 +106,21 @@ class RegisterViewBody extends StatelessWidget {
                   SizedBox(height: 10.h),
                   CustomTextField(
                     validator: (String? p1) {
-                      return AppValidators.requiredValidator(
+                      return AppValidators.passwordValidator(
                         p1 ?? '',
-                        'confirm password',
                       );
                     },
                     controller: cubit.confirmPasswordController,
                     keyboardType: TextInputType.visiblePassword,
-                    obscureText: cubit.isPassword,
+                    obscureText: cubit.isPassword2,
                     hintText: 'Confirm Password',
                     prefixIcon: SvgPicture.asset(AppSvgs.password),
                     suffixIcon: GestureDetector(
                       onTap: () {
-                        cubit.PasswordVisibility();
+                        cubit.PasswordVisibility2();
                       },
                       child: Icon(
-                        cubit.isPassword
+                        cubit.isPassword2
                             ? Icons.visibility_off
                             : Icons.visibility,
                       ),

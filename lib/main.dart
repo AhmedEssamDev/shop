@@ -23,6 +23,10 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp.router(
           theme: ThemeData(
+          progressIndicatorTheme: const ProgressIndicatorThemeData(
+            color: AppColors.primary,
+            circularTrackColor: Colors.grey,
+          ),
           textSelectionTheme: const TextSelectionThemeData(
             selectionColor: AppColors.borderColor, 
             cursorColor: AppColors.borderColor,            
