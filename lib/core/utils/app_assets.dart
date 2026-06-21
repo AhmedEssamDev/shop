@@ -3,6 +3,7 @@ abstract class AppImages {
   static const String fullLogo = '${basePath}full_logo.png';
   static const String splash = '${basePath}splash.png';
   static const String authBackground = '${basePath}background.png';
+  static const String slider = '${basePath}slider.png';
 }
 
 abstract class AppSvgs {
@@ -18,6 +19,7 @@ abstract class AppSvgs {
   static const String phone = '${basePath}phone.svg';
   static const String profile = '${basePath}profile.svg';
   static const String cart = '${basePath}cart.svg';
+  static const String bag = '${basePath}bag.svg';
 }
 
 
