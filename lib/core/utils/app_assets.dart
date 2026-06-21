@@ -17,6 +17,7 @@ abstract class AppSvgs {
   static const String person = '${basePath}person.svg';
   static const String phone = '${basePath}phone.svg';
   static const String profile = '${basePath}profile.svg';
+  static const String cart = '${basePath}cart.svg';
 }
 
 
