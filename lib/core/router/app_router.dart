@@ -16,9 +16,11 @@ import 'package:shop/features/onboarding/onboarding_screen_view.dart';
 
 abstract class AppRouter {
   static String getInitialRoute() {
+    final access = CacheHelper.getValue(CacheKeys.accessToken);
     final onboardingDone =
         CacheHelper.getValue(CacheKeys.onboardingDone) ?? false;
     if (!onboardingDone) return AppRouterKeys.onboarding;
+    if(access != null && access.toString().isNotEmpty) return AppRouterKeys.mainLayout;
     return AppRouterKeys.authScreen;
   }
 
