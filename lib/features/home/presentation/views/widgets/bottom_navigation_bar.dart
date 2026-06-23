@@ -32,7 +32,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
             colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
           ),
           icon: SvgPicture.asset(AppSvgs.cart),
-          label: 'cart',
+          label: 'items',
         ),
         BottomNavigationBarItem(
            activeIcon: SvgPicture.asset(

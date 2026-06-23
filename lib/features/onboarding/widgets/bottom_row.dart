@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shop/core/router/app_router_keys.dart';
 import 'package:shop/core/utils/app_colors.dart';
@@ -39,7 +40,7 @@ class BottomRow extends StatelessWidget {
               ),
             ),
           ),
-          pageDots(currentPage: currentPage),
+          pageDots(currentPage: currentPage, activeColor: AppColors.primary,activeSize:Size(40.0.r, 9.0.r),),
           TextButton(
             onPressed: () {
               nextPage(context);

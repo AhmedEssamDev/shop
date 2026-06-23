@@ -20,6 +20,11 @@ abstract class AppSvgs {
   static const String profile = '${basePath}profile.svg';
   static const String cart = '${basePath}cart.svg';
   static const String bag = '${basePath}bag.svg';
+  static const String order = '${basePath}order.svg';
+  static const String logout = '${basePath}logout.svg';
+  static const String forward = '${basePath}forward.svg';
+  static const String favorite = '${basePath}heart.svg';
+  static const String setting = '${basePath}setting.svg';
 }
 
 
