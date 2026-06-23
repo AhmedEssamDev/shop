@@ -5,6 +5,7 @@ import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/core/widgets/custom_search_field.dart';
 import 'package:shop/features/home/presentation/views/widgets/all_featured.list_view.dart';
+import 'package:shop/features/home/presentation/views/widgets/slider_page_view.dart';
 import 'package:shop/features/onboarding/widgets/pages_dots.dart';
 
 class AllFeaturedSection extends StatelessWidget {
@@ -25,25 +26,7 @@ class AllFeaturedSection extends StatelessWidget {
               SizedBox(height: 17.h),
               AllFeaturedListView(),
               SizedBox(height: 24.h),
-              SizedBox(
-                width: 343.w,
-                height: 189.h,
-                child: PageView.builder(
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
-                        image: DecorationImage(
-                          image: NetworkImage(
-                            'https://static.vecteezy.com/system/resources/thumbnails/057/068/323/small/single-fresh-red-strawberry-on-table-green-background-food-fruit-sweet-macro-juicy-plant-image-photo.jpg',
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
+              SliderPageView(),
               SizedBox(height: 12.h),
               pageDots(
                 currentPage: 2,
