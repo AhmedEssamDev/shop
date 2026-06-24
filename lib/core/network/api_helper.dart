@@ -5,6 +5,8 @@ import 'package:shop/core/cache/cache_keys.dart';
 import 'package:shop/core/network/api_keys.dart';
 import 'package:shop/core/network/api_response.dart';
 import 'package:shop/core/network/end_points.dart';
+import 'package:shop/core/router/app_router.dart';
+import 'package:shop/core/router/app_router_keys.dart';
 
 class ApiHelper {
   static final Dio _dio = Dio(BaseOptions(baseUrl: EndPoints.baseUrl));
@@ -15,6 +17,9 @@ class ApiHelper {
         onRequest: (options, handler) {
           logger.d(options.headers.toString());
           logger.d(options.path.toString());
+          if (options.headers != null) {
+            logger.d("Headers: ${options.headers.toString()}");
+          }
           return handler.next(options);
         },
         onResponse: (response, handler) {
@@ -23,8 +28,17 @@ class ApiHelper {
         },
         onError: (DioException error, handler) async{
           logger.e(error.response?.data.toString());
-          var errorResponse = error.response?.data as Map<String, dynamic>;
           try {
+            // تأكد إن الـ response data هو Map قبل ما نعمل cast
+            final responseData = error.response?.data;
+            if (responseData is! Map<String, dynamic>) {
+              if (error.response?.statusCode == 401) {
+                await CacheHelper.removeValue(CacheKeys.accessToken);
+                AppRouter.appRouter.go(AppRouterKeys.authScreen);
+              }
+              return handler.next(error);
+            }
+            var errorResponse = responseData;
             if (errorResponse[ApiKeys.errMessage]
             .toString()
             .contains(ApiKeys.expiredToken)){
@@ -55,9 +69,14 @@ class ApiHelper {
               'Bearer ${CacheHelper.getValue(CacheKeys.accessToken) ?? ''}';
               final response = await _dio.fetch(options);
               return handler.resolve(response);
+            } else if (error.response?.statusCode == 401) {
+              await CacheHelper.removeValue(CacheKeys.accessToken);
+              AppRouter.appRouter.go(AppRouterKeys.authScreen);
             }
           } catch (e) {
             logger.e(e.toString());
+            await CacheHelper.removeValue(CacheKeys.accessToken);
+            AppRouter.appRouter.go(AppRouterKeys.authScreen);
           }
            return handler.next(error);
         },
@@ -72,10 +91,12 @@ class ApiHelper {
     bool isAuthorized = true,
   }) async {
     try {
+      // جيب الـ token الأول وتأكد إنه مش null
+      final token = CacheHelper.getValue(CacheKeys.accessToken);
       var response = await _dio.get(endPoint, queryParameters: queryParams, options: Options(
         headers: {
-          if(isAuthorized)'Authorization':
-              'Bearer ${await CacheHelper.getValue(CacheKeys.accessToken)}'
+          if(isAuthorized && token != null && token.toString().isNotEmpty)
+            'Authorization': 'Bearer $token'
         }
       ));
       return ApiResponse.fromResponse(response);

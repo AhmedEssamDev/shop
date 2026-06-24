@@ -8,18 +8,19 @@ import 'package:shop/features/home/data/repos/home_repo.dart';
 class HomeRepoImpl implements HomeRepo {
   final ApiHelper apiHelper;
 
-  HomeRepoImpl({required this.apiHelper});
+  HomeRepoImpl(this.apiHelper);
   @override
   Future<Either<String, List<Categories>>> fetchCategories() async{
     try {
       var result = await apiHelper.getRequest(endPoint: EndPoints.categories);
     if(result.status){
-      return right(result.data.map((e) => Categories.fromJson(e)).toList());
+      var categoriesResponse = CategoriesModel.fromJson(result.data);
+      return right(categoriesResponse.categories ?? []);
     }else{
       return left(result.message);
     }
     } catch (e) {
-      return left(ApiResponse.fromError(e).toString());
+      return left(ApiResponse.fromError(e).message);
     }
   }
 }

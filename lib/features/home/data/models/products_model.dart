@@ -19,14 +19,14 @@ class Products {
       this.rating});
 
   Products.fromJson(Map<String, dynamic> json) {
-    bestSeller = json['best_seller'];
+    bestSeller = json['best_seller'] != null ? (json['best_seller'] as num).toInt() : null;
     description = json['description'];
-    id = json['id'];
+    id = json['id'] != null ? (json['id'] as num).toInt() : null;
     imagePath = json['image_path'];
     isFavorite = json['is_favorite'];
     name = json['name'];
-    price = json['price'];
-    rating = json['rating'];
+    price = json['price'] != null ? (json['price'] as num).toInt() : null;
+    rating = json['rating'] != null ? (json['rating'] as num).toDouble() : null;
   }
 
   Map<String, dynamic> toJson() {

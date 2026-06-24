@@ -38,7 +38,7 @@ class Categories {
 
   Categories.fromJson(Map<String, dynamic> json) {
     description = json['description'];
-    id = json['id'];
+    id = json['id'] != null ? (json['id'] as num).toInt() : null;
     imagePath = json['image_path'];
     if (json['products'] != null) {
       products = <Products>[];

@@ -15,11 +15,17 @@ class ApiResponse {
 
   // Factory method to handle Dio responses
   factory ApiResponse.fromResponse(Response response) {
+    // تأكد إن الـ data هو Map قبل ما تقرأ منه الـ message
+    final data = response.data;
+    String message = 'An error occurred.';
+    if (data is Map<String, dynamic> && data.containsKey("message")) {
+      message = data["message"];
+    }
     return ApiResponse(
       status: response.statusCode == 200 || response.statusCode == 201,
       statusCode: response.statusCode ?? 500,
-      data: response.data,
-      message: response.data["message"] ?? 'An error occurred.',
+      data: data,
+      message: message,
     );
   }
 

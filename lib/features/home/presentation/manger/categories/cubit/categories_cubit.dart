@@ -6,7 +6,8 @@ import 'package:shop/features/home/data/repos/home_repo.dart';
 part 'categories_state.dart';
 
 class CategoriesCubit extends Cubit<CategoriesState> {
-  CategoriesCubit({required this.homeRepo}) : super(CategoriesInitial());
+  CategoriesCubit(this.homeRepo) : super(CategoriesInitial());
+  List<Categories>? categories;
   static CategoriesCubit get(context) => BlocProvider.of(context);
   final HomeRepo homeRepo;
 
@@ -15,7 +16,10 @@ class CategoriesCubit extends Cubit<CategoriesState> {
     var result = await homeRepo.fetchCategories();
     result.fold(
       (error) => emit(CategoriesFailure(error.toString())),
-      (categories) => emit(CategoriesSuccess(categories),
-    ));
+      (categories) {
+        this.categories = categories;
+        emit(CategoriesSuccess());
+      },
+    );
   }
 }
