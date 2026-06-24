@@ -27,12 +27,6 @@ class AllFeaturedSection extends StatelessWidget {
               AllFeaturedListView(),
               SizedBox(height: 24.h),
               SliderPageView(),
-              SizedBox(height: 12.h),
-              pageDots(
-                currentPage: 2,
-                activeColor: AppColors.lightPink,
-                activeSize: Size(12.w, 12.h),
-              ),
               SizedBox(height: 32.h),
               Align(
                 alignment: AlignmentDirectional.topStart,

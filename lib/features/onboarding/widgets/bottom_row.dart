@@ -40,7 +40,7 @@ class BottomRow extends StatelessWidget {
               ),
             ),
           ),
-          pageDots(currentPage: currentPage, activeColor: AppColors.primary,activeSize:Size(40.0.r, 9.0.r),),
+          pageDots(currentPage: currentPage, activeColor: AppColors.primary,activeSize:Size(40.0.r, 9.0.r),dotsCount: 3,),
           TextButton(
             onPressed: () {
               nextPage(context);

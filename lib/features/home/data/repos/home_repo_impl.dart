@@ -3,6 +3,7 @@ import 'package:shop/core/network/api_helper.dart';
 import 'package:shop/core/network/api_response.dart';
 import 'package:shop/core/network/end_points.dart';
 import 'package:shop/features/home/data/models/categories_model.dart';
+import 'package:shop/features/home/data/models/sliders_model.dart';
 import 'package:shop/features/home/data/repos/home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
@@ -16,6 +17,22 @@ class HomeRepoImpl implements HomeRepo {
     if(result.status){
       var categoriesResponse = CategoriesModel.fromJson(result.data);
       return right(categoriesResponse.categories ?? []);
+    }else{
+      return left(result.message);
+    }
+    } catch (e) {
+      return left(ApiResponse.fromError(e).message);
+    }
+  }
+
+  @override
+  Future<Either<String, List<Sliders>>> fetchSliders() async{
+   
+    try {
+      var result = await apiHelper.getRequest(endPoint: EndPoints.sliders);
+    if(result.status){
+      var slidersResponse = SlidersModel.fromJson(result.data);
+      return right(slidersResponse.sliders ?? []);
     }else{
       return left(result.message);
     }

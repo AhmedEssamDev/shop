@@ -4,15 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/utils/app_colors.dart';
 
 class pageDots extends StatelessWidget {
-  const pageDots({super.key, required this.currentPage,required this.activeColor, required this.activeSize});
+  const pageDots({super.key, required this.currentPage,required this.activeColor, required this.activeSize, required this.dotsCount});
 
   final int currentPage;
   final Color activeColor;
   final Size activeSize;
+  final int dotsCount;
   @override
   Widget build(BuildContext context) {
     return DotsIndicator(
-      dotsCount: 3,
+      dotsCount: dotsCount,
       position: currentPage.toDouble(),
       decorator: DotsDecorator(
         size: Size.square(9.0.r),
