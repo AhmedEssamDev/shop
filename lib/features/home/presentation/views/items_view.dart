@@ -9,7 +9,7 @@ class ItemsView extends StatelessWidget {
   Widget build(BuildContext context) {
    return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      body: ItemsViewBody(),
+      body: Center(child: Text('hello')),
     );
   }
 }

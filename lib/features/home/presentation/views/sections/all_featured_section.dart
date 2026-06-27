@@ -5,6 +5,7 @@ import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/core/widgets/custom_search_field.dart';
 import 'package:shop/features/home/presentation/views/widgets/all_featured.list_view.dart';
+import 'package:shop/features/home/presentation/views/widgets/product_card.dart';
 import 'package:shop/features/home/presentation/views/widgets/slider_page_view.dart';
 import 'package:shop/features/onboarding/widgets/pages_dots.dart';
 
@@ -33,7 +34,7 @@ class AllFeaturedSection extends StatelessWidget {
                 child: Padding(
                   padding: REdgeInsets.only(left: 8.0),
                   child: Text(
-                    'Recommended',
+                    'Best Sellers',
                     style: AppTextStyles.textStyle18.copyWith(
                       color: AppColors.secondary,
                     ),

@@ -9,7 +9,7 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CustomScrollView(
       physics: const BouncingScrollPhysics(),
-      slivers: [AllFeaturedSection(), ProductsGridView()],
+      slivers: [AllFeaturedSection(),ProductsGridView()],
     );
   }
 }

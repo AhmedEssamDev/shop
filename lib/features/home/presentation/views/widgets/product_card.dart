@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
+import 'package:shop/features/home/data/models/best_seller_model.dart';
 
 class productCard extends StatelessWidget {
-  const productCard({super.key});
-
+  const productCard({super.key,required this.product});
+  final BestSellerProducts product;
   @override
   Widget build(BuildContext context) {
-    return Card(
+          return Card(
       color: AppColors.white,
       elevation: 3, // إضافة ظل
       shape: RoundedRectangleBorder(
@@ -21,7 +22,7 @@ class productCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.r),
               child: Image.network(
-                'https://petapixel.com/assets/uploads/2024/01/The-Star-of-System-Sol-Rectangle-640x800.jpg',
+                product.imagePath?? '',
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
@@ -34,18 +35,18 @@ class productCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Mens Starry',
+                  product.name?? '',
                   style: AppTextStyles.textStyle16.copyWith(
                     color: AppColors.secondary,
                   ),
                 ),
                 Text(
-                  'Mens Starry Sky Printed Shirt 100% Cotton Fabric',
+                  product.description?? '',
                   style: AppTextStyles.textStyle10,
                 ),
                 SizedBox(height: 4.h),
     
-                Text('₹399', style: AppTextStyles.textStyle12),
+                Text(product.price.toString(), style: AppTextStyles.textStyle12),
                 SizedBox(height: 4.h),
                 Icon(Icons.star, size: 14.r, color: Colors.amber),
                 SizedBox(height: 8.h),
@@ -54,6 +55,6 @@ class productCard extends StatelessWidget {
           ),
         ],
       ),
-    );
+      );
   }
 }
