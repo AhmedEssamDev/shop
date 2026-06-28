@@ -10,6 +10,12 @@ class CategoriesCubit extends Cubit<CategoriesState> {
   List<Categories>? categories;
   static CategoriesCubit get(context) => BlocProvider.of(context);
   final HomeRepo homeRepo;
+  int currentIndex = 0;
+  void changeIndex(int index) {
+    currentIndex = index;
+    emit(CategoriesIndexChanged());
+  }
+
 
   Future<void> getCategories() async {
     emit(CategoriesLoading());

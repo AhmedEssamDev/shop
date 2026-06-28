@@ -13,3 +13,5 @@ final class CategoriesFailure extends CategoriesState {
   CategoriesFailure(this.errMessage);
 
 }
+
+class CategoriesIndexChanged extends CategoriesState {}
