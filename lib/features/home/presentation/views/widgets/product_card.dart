@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
-import 'package:shop/features/home/data/models/best_seller_model.dart';
 
 class productCard extends StatelessWidget {
   const productCard({super.key,required this.product});
-  final BestSellerProducts product;
+  final dynamic product;
   @override
   Widget build(BuildContext context) {
           return Card(

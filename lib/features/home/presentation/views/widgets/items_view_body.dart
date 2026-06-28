@@ -45,7 +45,7 @@ class ItemsViewBody extends StatelessWidget {
             ),
           ),
         ),
-        // ProductsGridViewItems(),
+        ProductsGridViewItems(),
       ],
     );
   }

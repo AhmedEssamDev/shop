@@ -31,6 +31,7 @@ class CategoryWidget extends StatelessWidget {
             Text(
               cubit.categories![index].title ?? 'Unknown',
               style: AppTextStyles.textStyle10.copyWith(
+                fontWeight: FontWeight.w600,
                 color: cubit.currentIndex == index
                     ? AppColors.primary
                     : Color(0xff21003D),
