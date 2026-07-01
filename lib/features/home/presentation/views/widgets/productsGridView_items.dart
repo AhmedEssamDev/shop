@@ -11,7 +11,7 @@ class ProductsGridViewItems extends StatelessWidget {
     return BlocBuilder<CategoriesCubit, CategoriesState>(
       builder: (context, state) {
         var cubit = CategoriesCubit.get(context);
-        final products = cubit.categories?[cubit.currentIndex]?.products ?? [];
+        final products = cubit.categories?[cubit.currentIndex].products ?? [];
         if (state is CategoriesLoading) {
           // حل المشكلة: غلف الـ Center بـ SliverToBoxAdapter
           return const SliverToBoxAdapter(
