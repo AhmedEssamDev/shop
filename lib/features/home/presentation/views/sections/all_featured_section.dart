@@ -5,9 +5,7 @@ import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/core/widgets/custom_search_field.dart';
 import 'package:shop/features/home/presentation/views/widgets/all_featured.list_view.dart';
-import 'package:shop/features/home/presentation/views/widgets/product_card.dart';
 import 'package:shop/features/home/presentation/views/widgets/slider_page_view.dart';
-import 'package:shop/features/onboarding/widgets/pages_dots.dart';
 
 class AllFeaturedSection extends StatelessWidget {
   const AllFeaturedSection({super.key});
