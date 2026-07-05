@@ -13,6 +13,7 @@ import 'package:shop/features/auth/register/presentation/manger/cubit/register_c
 import 'package:shop/features/auth/register/presentation/views/Register_view.dart';
 import 'package:shop/features/home/presentation/views/main_layout.dart';
 import 'package:shop/features/onboarding/onboarding_screen_view.dart';
+import 'package:shop/features/profile/presentation/views/edit_profile_view.dart';
 
 abstract class AppRouter {
   static String getInitialRoute() {
@@ -50,6 +51,10 @@ abstract class AppRouter {
       GoRoute(
         path: '/mainLayout',
         builder: (context, state) => const MainLayout(),
+      ),
+      GoRoute(
+        path: '/editProfile',
+        builder: (context, state) => const EditProfileView(),
       ),
     ],
   );
