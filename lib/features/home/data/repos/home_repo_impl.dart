@@ -4,6 +4,7 @@ import 'package:shop/core/network/api_response.dart';
 import 'package:shop/core/network/end_points.dart';
 import 'package:shop/features/home/data/models/best_seller_model.dart';
 import 'package:shop/features/home/data/models/categories_model.dart';
+import 'package:shop/features/home/data/models/products_model.dart';
 import 'package:shop/features/home/data/models/sliders_model.dart';
 import 'package:shop/features/home/data/repos/home_repo.dart';
 
@@ -49,6 +50,21 @@ class HomeRepoImpl implements HomeRepo {
     if(result.status){
       var bestSellerResponse = BestSellerModel.fromJson(result.data);
       return right(bestSellerResponse.bestSellerProducts ?? []);
+    }else{
+      return left(result.message);
+    }
+    } catch (e) {
+      return left(ApiResponse.fromError(e).message);
+    }
+  }
+
+  @override
+  Future<Either<String, List<Products>>> searchProducts(String query) async{
+    try {
+      var result = await apiHelper.getRequest(endPoint: EndPoints.search + query);
+    if(result.status){
+      var productsResponse = ProductsModel.fromJson(result.data);
+      return right(productsResponse.products ?? []);
     }else{
       return left(result.message);
     }

@@ -1,3 +1,31 @@
+class ProductsModel {
+  List<Products>? products;
+  bool? status;
+
+  ProductsModel({this.products, this.status});
+
+  ProductsModel.fromJson(Map<String, dynamic> json) {
+    if (json['products'] != null) {
+      products = <Products>[];
+      json['products'].forEach((v) {
+        products!.add(new Products.fromJson(v));
+      });
+    }
+    status = json['status'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.products != null) {
+      data['products'] = this.products!.map((v) => v.toJson()).toList();
+    }
+    data['status'] = this.status;
+    return data;
+  }
+}
+
+
+
 class Products {
   int? bestSeller;
   String? description;

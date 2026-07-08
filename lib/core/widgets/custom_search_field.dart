@@ -4,8 +4,11 @@ import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 
 class CustomSearchField extends StatelessWidget {
-  const CustomSearchField({super.key});
-
+  const CustomSearchField({super.key, this.readOnly = false, this.onTap, this.onChanged, this.controller});
+  final bool readOnly;
+  final VoidCallback? onTap;
+  final Function(String)? onChanged;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,9 +25,9 @@ class CustomSearchField extends StatelessWidget {
         ],
       ),
       child: TextField(
-        onChanged: (value) {
-          // Run your search filter logic here
-        },
+        readOnly: readOnly,
+        onTap: onTap,
+        onChanged: onChanged,
         decoration: InputDecoration(
           hintText: 'Search any Product..',
           hintStyle: AppTextStyles.textStyle13.copyWith(

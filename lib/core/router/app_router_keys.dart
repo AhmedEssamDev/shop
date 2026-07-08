@@ -5,4 +5,5 @@ abstract class AppRouterKeys {
   static const String register = '/register';
   static const String mainLayout = '/mainLayout';
   static const String editProfile = '/editProfile';
+  static const String search = '/search';
 }

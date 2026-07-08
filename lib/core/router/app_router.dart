@@ -13,7 +13,10 @@ import 'package:shop/features/auth/login/presentation/views/login_view.dart';
 import 'package:shop/features/auth/register/data/repo/register_repo_impl.dart';
 import 'package:shop/features/auth/register/presentation/manger/cubit/register_cubit.dart';
 import 'package:shop/features/auth/register/presentation/views/Register_view.dart';
+import 'package:shop/features/home/data/repos/home_repo_impl.dart';
+import 'package:shop/features/home/presentation/manger/search/cubit/search_cubit.dart';
 import 'package:shop/features/home/presentation/views/main_layout.dart';
+import 'package:shop/features/home/presentation/views/search_view.dart';
 import 'package:shop/features/onboarding/onboarding_screen_view.dart';
 import 'package:shop/features/profile/data/repo/user_data_repo_impl.dart';
 import 'package:shop/features/profile/presentation/manger/cubit/update_profile_cubit.dart';
@@ -69,6 +72,13 @@ abstract class AppRouter {
           );
         },
       ),
+      GoRoute(
+        path: '/search',
+        builder: (context, state) => BlocProvider(
+          create: (context) => SearchCubit(HomeRepoImpl(ApiHelper())),
+          child: const SearchView(),
+        ),
+      )
     ],
   );
 }

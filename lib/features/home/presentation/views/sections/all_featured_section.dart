@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shop/core/router/app_router_keys.dart';
 import 'package:shop/core/utils/app_assets.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
@@ -21,7 +23,12 @@ class AllFeaturedSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(AppImages.fullLogo, height: 110.h, width: 110.w),
-              CustomSearchField(),
+              CustomSearchField(
+                onTap: () {
+                  GoRouter.of(context).push(AppRouterKeys.search);
+                },
+                readOnly: true
+              ),
               SizedBox(height: 17.h),
               AllFeaturedListView(),
               SizedBox(height: 24.h),
