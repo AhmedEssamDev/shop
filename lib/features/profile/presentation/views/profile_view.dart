@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop/core/network/api_helper.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/features/profile/data/repo/user_data_repo_impl.dart';
-import 'package:shop/features/profile/presentation/manger/cubit/user_data_cubit.dart';
+import 'package:shop/features/profile/presentation/manger/user_data/user_data_cubit.dart';
 import 'package:shop/features/profile/presentation/views/widgets/profile_view_body.dart';
 
 class ProfileView extends StatelessWidget {

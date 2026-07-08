@@ -10,7 +10,7 @@ class AppNotifications {
       Overlay.of(context),
       CustomSnackBar.success(
         message: message,
-        backgroundColor: AppColors.success, // أخضر غامق (يناسب الطابع الكلاسيكي)
+        backgroundColor: AppColors.success,
         textStyle: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
       ),
     );
@@ -21,7 +21,7 @@ class AppNotifications {
       Overlay.of(context),
       CustomSnackBar.error(
         message: message,
-        backgroundColor: AppColors.error, // أحمر داكن
+        backgroundColor: AppColors.error,
         textStyle: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
       ),
     );

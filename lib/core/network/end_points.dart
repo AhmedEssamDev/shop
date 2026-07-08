@@ -7,4 +7,5 @@ abstract class EndPoints {
   static const String sliders = 'sliders';
   static const String bestSeller = 'best_seller_products';
   static const String getuserData = 'get_user_data';
+  static const String updateProfile = 'update_profile';
 }

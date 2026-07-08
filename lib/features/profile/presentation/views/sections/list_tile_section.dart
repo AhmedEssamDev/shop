@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shop/core/cache/cache_helper.dart';
@@ -6,6 +7,7 @@ import 'package:shop/core/cache/cache_keys.dart';
 import 'package:shop/core/router/app_router_keys.dart';
 import 'package:shop/core/utils/app_assets.dart';
 import 'package:shop/core/utils/app_colors.dart';
+import 'package:shop/features/profile/presentation/manger/user_data/user_data_cubit.dart';
 import 'package:shop/features/profile/presentation/views/widgets/list_tile_widget.dart';
 
 class ListTileSection extends StatelessWidget {
@@ -20,8 +22,11 @@ class ListTileSection extends StatelessWidget {
           leading: AppSvgs.profile,
           title: 'My Profile',
           trailing: AppSvgs.forward,
-          onTap: () {
-            GoRouter.of(context).push(AppRouterKeys.editProfile);
+          onTap: () async {
+            final cubit = context.read<UserDataCubit>();
+            final userData = cubit.userData;
+            await GoRouter.of(context).push(AppRouterKeys.editProfile, extra: userData);
+            cubit.getUserData(); 
           },
         ),
         ListTileWidget(

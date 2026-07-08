@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:shop/core/network/api_helper.dart';
 import 'package:shop/core/network/api_response.dart';
 import 'package:shop/core/network/end_points.dart';
@@ -11,20 +12,49 @@ class UserDataRepoImpl implements UserDataRepo {
   UserDataRepoImpl(this.apiHelper);
 
   @override
-  Future<Either<String, UserModel>> getUserData() async{
+  Future<Either<String, UserModel>> getUserData() async {
     try {
-      var response = await apiHelper.getRequest(endPoint: EndPoints.getuserData);
+      var response = await apiHelper.getRequest(
+        endPoint: EndPoints.getuserData,
+      );
       print('--- User Response : ${response.data}');
-      if (response.status){
+      if (response.status) {
         var userData = UserModel.fromJson(response.data['user']);
         return Right(userData);
-      }else{
+      } else {
         return Left(response.message);
       }
     } catch (e) {
-       return Left(ApiResponse.fromError(e).message);
-    
+      return Left(ApiResponse.fromError(e).message);
     }
   }
 
+  @override
+  Future<Either<String, String>> updateProfile({
+    required String name,
+    required String phone,
+    String? imagePath,
+  }) async {
+    try {
+      var response = await apiHelper.putRequest(
+        endPoint: EndPoints.updateProfile,
+        data: {
+          'name': name,
+          'phone': phone,
+          if (imagePath != null)
+            'image': await MultipartFile.fromFile(
+              imagePath,
+              filename: imagePath.split('/').last,
+            ),
+        },
+      );
+      if (response.status) {
+        return Right(response.message);
+      } else {
+        return Left(response.message);
+      }
+    } catch (e) {
+      return Left(ApiResponse.fromError(e).message);
+    }
+  }
 }

@@ -2,22 +2,23 @@ class UserModel {
   String? email;
   List<dynamic>? favoriteProducts;
   int? id;
-  Null imagePath;
+  String? imagePath;
   String? name;
   String? phone;
 
-  UserModel(
-      {this.email,
-      this.favoriteProducts,
-      this.id,
-      this.imagePath,
-      this.name,
-      this.phone});
+  UserModel({
+    this.email,
+    this.favoriteProducts,
+    this.id,
+    this.imagePath,
+    this.name,
+    this.phone,
+  });
 
   UserModel.fromJson(Map<String, dynamic> json) {
     email = json['email'];
     if (json['favorite_products'] != null) {
-      favoriteProducts = []; 
+      favoriteProducts = [];
       json['favorite_products'].forEach((v) {
         favoriteProducts!.add(v);
       });
