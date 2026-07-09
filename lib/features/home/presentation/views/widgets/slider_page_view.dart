@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/features/home/presentation/manger/sliders/cubit/sliders_cubit.dart';
 import 'package:shop/features/onboarding/widgets/pages_dots.dart';
-
+import 'package:shop/core/widgets/slider_shimmer.dart';
+import 'package:shop/core/widgets/custom_network_image.dart';
 class SliderPageView extends StatefulWidget {
   const SliderPageView({super.key});
 
@@ -52,16 +53,10 @@ class _SliderPageViewState extends State<SliderPageView> {
                     cubit.changePage(index);
                   },
                   itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
-                        image: DecorationImage(
-                          fit: BoxFit.cover, // إضافة fit لضمان عرض الصورة بشكل صحيح
-                          image: NetworkImage(
-                            cubit.sliders![index].imagePath ?? '',
-                          ),
-                        ),
-                      ),
+                    return CustomNetworkImage(
+                      imageUrl: cubit.sliders![index].imagePath ?? '',
+                      fit: BoxFit.cover,
+                      borderRadius: BorderRadius.circular(20.r),
                     );
                   },
                 ),
@@ -82,7 +77,7 @@ class _SliderPageViewState extends State<SliderPageView> {
             ],
           );
         } else if (state is SlidersLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const SliderShimmer();
         } else if (state is SlidersFailure) {
           return Center(child: Text(state.errMessage));
         }

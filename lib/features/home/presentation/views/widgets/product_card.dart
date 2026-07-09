@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
+import 'package:shop/core/widgets/custom_network_image.dart';
 
 class productCard extends StatelessWidget {
   const productCard({super.key,required this.product});
@@ -20,8 +21,8 @@ class productCard extends StatelessWidget {
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.r),
-              child: Image.network(
-                product.imagePath?? '',
+              child: CustomNetworkImage(
+                imageUrl: product.imagePath ?? '',
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),

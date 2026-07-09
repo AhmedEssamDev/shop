@@ -6,6 +6,7 @@ import 'package:shop/core/widgets/custom_app_bar.dart';
 import 'package:shop/core/widgets/custom_search_field.dart';
 import 'package:shop/features/home/presentation/manger/search/cubit/search_cubit.dart';
 import 'package:shop/features/home/presentation/views/widgets/product_card.dart';
+import 'package:shop/core/widgets/product_card_shimmer.dart';
 
 class SearchViewBody extends StatefulWidget {
   const SearchViewBody({super.key});
@@ -47,7 +48,20 @@ class _SearchViewBodyState extends State<SearchViewBody> {
             child: BlocBuilder<SearchCubit, SearchState>(
               builder: (context, state) {
                 if (state is SearchLoading) {
-                  return const Center(child: CircularProgressIndicator());
+                  return GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.6,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemCount: 4, // Show 4 skeleton items
+                    itemBuilder: (context, index) {
+                      return const ProductCardShimmer();
+                    },
+                  );
                 } else if (state is SearchFailure) {
                   return Center(child: Text(state.errMessage));
                 }

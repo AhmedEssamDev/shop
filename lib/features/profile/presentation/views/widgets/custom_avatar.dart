@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:shop/core/widgets/custom_network_image.dart';
 class CustomAvatar extends StatelessWidget {
   const CustomAvatar({super.key, this.imageUrl,});
   final String? imageUrl;
@@ -9,12 +9,16 @@ class CustomAvatar extends StatelessWidget {
     return Container(
       width: 96.w,
       height: 96.h,
-      child: CircleAvatar(
-        backgroundImage: imageUrl != null ? NetworkImage(imageUrl!) : null,
-        child: imageUrl == null 
-            ? const Icon(Icons.person, size: 50, color: Colors.white) 
-            : null,
-      ),
+      child: imageUrl != null && imageUrl!.isNotEmpty
+          ? CustomNetworkImage(
+              imageUrl: imageUrl!,
+              isCircular: true,
+              width: 96.w,
+              height: 96.h,
+            )
+          : const CircleAvatar(
+              child: Icon(Icons.person, size: 50, color: Colors.white),
+            ),
     );
   }
 }

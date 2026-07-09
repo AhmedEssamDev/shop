@@ -5,6 +5,7 @@ import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/features/home/presentation/manger/categories/cubit/categories_cubit.dart';
 import 'package:shop/features/home/presentation/views/widgets/category_widget.dart';
+import 'package:shop/core/widgets/category_shimmer.dart';
 
 class AllFeaturedListViewItems extends StatelessWidget {
   const AllFeaturedListViewItems({super.key});
@@ -30,7 +31,17 @@ class AllFeaturedListViewItems extends StatelessWidget {
           builder: (context, state) {
             var cubit = CategoriesCubit.get(context);
             if (state is CategoriesLoading) {
-              return Center(child: CircularProgressIndicator());
+              return SizedBox(
+                height: 85.h,
+                child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 6, // Show 6 skeleton items
+                  itemBuilder: (context, index) {
+                    return const CategoryShimmer();
+                  },
+                ),
+              );
             } else if (state is CategoriesFailure) {
               return Center(child: Text(state.errMessage));
             } else {
