@@ -1,60 +1,72 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shop/core/router/app_router_keys.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/core/widgets/custom_network_image.dart';
 
 class productCard extends StatelessWidget {
-  const productCard({super.key,required this.product});
+  const productCard({super.key, required this.product});
   final dynamic product;
   @override
   Widget build(BuildContext context) {
-          return Card(
-      color: AppColors.white,
-      elevation: 3, // إضافة ظل
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ), // حواف دائرية
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.r),
-              child: CustomNetworkImage(
-                imageUrl: product.imagePath ?? '',
-                width: double.infinity,
-                fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        GoRouter.of(context).push(AppRouterKeys.product,
+        extra: product
+        );
+      },
+      child: Card(
+        color: AppColors.white,
+        elevation: 3, // إضافة ظل
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ), // حواف دائرية
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.r),
+                child: CustomNetworkImage(
+                  imageUrl: product.imagePath ?? '',
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 8.h),
-          Padding(
-            padding: REdgeInsets.only(left: 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  product.name?? '',
-                  style: AppTextStyles.textStyle16.copyWith(
-                    color: AppColors.secondary,
+            SizedBox(height: 8.h),
+            Padding(
+              padding: REdgeInsets.only(left: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.name ?? '',
+                    style: AppTextStyles.textStyle16.copyWith(
+                      color: AppColors.secondary,
+                    ),
                   ),
-                ),
-                Text(
-                  product.description?? '',
-                  style: AppTextStyles.textStyle10,
-                ),
-                SizedBox(height: 4.h),
-    
-                Text(product.price.toString(), style: AppTextStyles.textStyle12),
-                SizedBox(height: 4.h),
-                Icon(Icons.star, size: 14.r, color: Colors.amber),
-                SizedBox(height: 8.h),
-              ],
+                  Text(
+                    product.description ?? '',
+                    style: AppTextStyles.textStyle10,
+                  ),
+                  SizedBox(height: 4.h),
+      
+                  Text(
+                    product.price.toString(),
+                    style: AppTextStyles.textStyle12,
+                  ),
+                  SizedBox(height: 4.h),
+                  Icon(Icons.star, size: 14.r, color: Colors.amber),
+                  SizedBox(height: 8.h),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-      );
+    );
   }
 }

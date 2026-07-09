@@ -25,6 +25,8 @@ abstract class AppSvgs {
   static const String forward = '${basePath}forward.svg';
   static const String favorite = '${basePath}heart.svg';
   static const String setting = '${basePath}setting.svg';
+  static const String love = '${basePath}love.svg';
+  static const String love1 = '${basePath}love1.svg';
 }
 
 

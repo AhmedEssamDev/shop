@@ -18,6 +18,7 @@ import 'package:shop/features/home/presentation/manger/search/cubit/search_cubit
 import 'package:shop/features/home/presentation/views/main_layout.dart';
 import 'package:shop/features/home/presentation/views/search_view.dart';
 import 'package:shop/features/onboarding/onboarding_screen_view.dart';
+import 'package:shop/features/product/presentation/views/product_view.dart';
 import 'package:shop/features/profile/data/repo/user_data_repo_impl.dart';
 import 'package:shop/features/profile/presentation/manger/cubit/update_profile_cubit.dart';
 import 'package:shop/features/profile/presentation/views/edit_profile_view.dart';
@@ -78,6 +79,14 @@ abstract class AppRouter {
           create: (context) => SearchCubit(HomeRepoImpl(ApiHelper())),
           child: const SearchView(),
         ),
+      ),
+      GoRoute(
+        path: '/product',
+        builder: (context, state) {
+          final product = state.extra;
+          return  ProductView(
+          product: product,
+        );}
       )
     ],
   );
