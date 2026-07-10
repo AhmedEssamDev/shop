@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/features/home/presentation/manger/categories/cubit/categories_cubit.dart';
-
+import 'package:shop/core/widgets/category_shimmer.dart';
+import 'package:shop/core/widgets/custom_network_image.dart';
 class AllFeaturedListView extends StatelessWidget {
   const AllFeaturedListView({super.key});
 
@@ -43,10 +44,11 @@ class AllFeaturedListView extends StatelessWidget {
                           Container(
                             width: 60.w,
                             height: 60.h,
-                            child: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                cubit.categories![index].imagePath?? '',
-                              ),
+                            child: CustomNetworkImage(
+                              imageUrl: cubit.categories![index].imagePath?? '',
+                              isCircular: true,
+                              width: 60.w,
+                              height: 60.h,
                             ),
                           ),
                           Text(
@@ -63,7 +65,17 @@ class AllFeaturedListView extends StatelessWidget {
                 ),
               );
             } else if (state is CategoriesLoading) {
-              return Center(child: CircularProgressIndicator());
+              return SizedBox(
+                height: 85.h,
+                child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 6, // Show 6 skeleton items
+                  itemBuilder: (context, index) {
+                    return const CategoryShimmer();
+                  },
+                ),
+              );
             } else if (state is CategoriesFailure) {
               return Center(child: Text(state.errMessage));
             }

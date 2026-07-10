@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop/core/widgets/custom_shimmer.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 
 class CustomNetworkImage extends StatelessWidget {
   final String imageUrl;
@@ -21,33 +21,20 @@ class CustomNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget imageWidget = Image.network(
-      imageUrl,
-      width: width,
-      height: height,
-      fit: fit ?? BoxFit.cover,
-      loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) return child;
-        if (isCircular) {
-          return CustomShimmer.circular(width: width, height: height ?? width);
-        } else if (borderRadius != null) {
-          return CustomShimmer.roundedRectangular(
-            width: width,
-            height: height,
-            borderRadius: borderRadius!,
-          );
-        } else {
-          return CustomShimmer.rectangular(width: width, height: height);
-        }
-      },
-      errorBuilder: (context, error, stackTrace) {
-        return Container(
-          width: width,
-          height: height,
-          color: Colors.grey[200],
-          child: const Icon(Icons.error_outline, color: Colors.grey),
-        );
-      },
+    Widget imageWidget = FancyShimmerImage(
+      imageUrl: imageUrl,
+      width: width ?? 300,
+      height: height ?? 300,
+      boxFit: fit ?? BoxFit.cover,
+      shimmerBaseColor: Colors.grey[300],
+      shimmerHighlightColor: Colors.grey[100],
+      shimmerBackColor: Colors.transparent,
+      errorWidget: Container(
+        width: width,
+        height: height,
+        color: Colors.grey[200],
+        child: const Icon(Icons.error_outline, color: Colors.grey),
+      ),
     );
 
     if (isCircular) {

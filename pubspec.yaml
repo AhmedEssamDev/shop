@@ -44,6 +44,7 @@ dependencies:
   logger: ^2.7.0
   shared_preferences: ^2.5.5
   shimmer: ^3.0.0
+  fancy_shimmer_image: ^2.0.3 
   top_snackbar_flutter: ^3.1.0
 dev_dependencies: null
 
