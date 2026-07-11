@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shop/core/router/app_router_keys.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/core/widgets/custom_network_image.dart';
+import 'package:shop/features/home/presentation/views/widgets/custom_rating_stars.dart';
 
 class productCard extends StatelessWidget {
   const productCard({super.key, required this.product});
@@ -13,9 +15,7 @@ class productCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouterKeys.product,
-        extra: product
-        );
+        GoRouter.of(context).push(AppRouterKeys.product, extra: product);
       },
       child: Card(
         color: AppColors.white,
@@ -53,13 +53,13 @@ class productCard extends StatelessWidget {
                     style: AppTextStyles.textStyle10,
                   ),
                   SizedBox(height: 4.h),
-      
+
                   Text(
-                    product.price.toString(),
+                    '${product.price ?? ''} USD',
                     style: AppTextStyles.textStyle12,
                   ),
                   SizedBox(height: 4.h),
-                  Icon(Icons.star, size: 14.r, color: Colors.amber),
+                  CustomRatingStars(product: product),
                   SizedBox(height: 8.h),
                 ],
               ),

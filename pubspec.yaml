@@ -46,6 +46,7 @@ dependencies:
   shimmer: ^3.0.0
   fancy_shimmer_image: ^2.0.3 
   top_snackbar_flutter: ^3.1.0
+  flutter_rating_stars: ^1.1.0
 dev_dependencies: null
 
 flutter_launcher_icons:
