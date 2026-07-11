@@ -22,6 +22,8 @@ import 'package:shop/features/product/presentation/views/product_view.dart';
 import 'package:shop/features/profile/data/repo/user_data_repo_impl.dart';
 import 'package:shop/features/profile/presentation/manger/cubit/update_profile_cubit.dart';
 import 'package:shop/features/profile/presentation/views/edit_profile_view.dart';
+import 'package:shop/features/profile/presentation/views/favorite_view.dart';
+import 'package:shop/features/profile/presentation/views/settings_view.dart';
 import 'package:shop/features/profile/presentation/views/widgets/edit_profile_view_body.dart';
 
 abstract class AppRouter {
@@ -87,6 +89,14 @@ abstract class AppRouter {
           return  ProductView(
           product: product,
         );}
+      ),
+      GoRoute(
+        path: '/settings',
+        builder: (context, state) => const SettingsView(),
+      ),
+      GoRoute(
+        path: '/favorite',
+        builder: (context, state) => const FavoriteView(),
       )
     ],
   );

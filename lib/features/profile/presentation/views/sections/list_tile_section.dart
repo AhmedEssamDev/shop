@@ -39,13 +39,17 @@ class ListTileSection extends StatelessWidget {
           leading: AppSvgs.favorite,
           title: 'My Favorites',
           trailing: AppSvgs.forward,
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(AppRouterKeys.favorite);
+          },
         ),
         ListTileWidget(
           leading: AppSvgs.setting,
           title: 'Settings',
           trailing: AppSvgs.forward,
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(AppRouterKeys.settings);
+          },
         ),
         SizedBox(height: 32.h),
         Container(width: 308.w, height: 1.h, color: AppColors.primary),
