@@ -11,11 +11,10 @@ class CustomRatingStars extends StatelessWidget {
     return RatingStars(
       value: (product.rating ?? 0).toDouble(),
       starCount: 5,
-      starSize: 14.sp,
+      starSize: 14,
       starSpacing: 1.w,
       valueLabelVisibility: false,
 
-      // allowHalfRating: true,
       starBuilder: (index, color) {
         double rating = (product.rating ?? 0).toDouble();
 
@@ -29,20 +28,32 @@ class CustomRatingStars extends StatelessWidget {
             height: 14.sp,
             child: Stack(
               children: [
-                Icon(Icons.star_border, color: Colors.grey, size: 14.sp),
+                Icon(
+                  Icons.star_border,
+                  color: AppColors.searchFieldColor,
+                  size: 14.sp,
+                ),
 
                 ClipRect(
                   child: Align(
                     alignment: Alignment.centerLeft,
                     widthFactor: fillPercentage,
-                    child: Icon(Icons.star, color: Colors.grey, size: 14.sp),
+                    child: Icon(
+                      Icons.star,
+                      color: AppColors.searchFieldColor,
+                      size: 14.sp,
+                    ),
                   ),
                 ),
               ],
             ),
           );
         } else {
-          return Icon(Icons.star_border, color: Colors.grey, size: 14.sp);
+          return Icon(
+            Icons.star_border,
+            color: AppColors.searchFieldColor,
+            size: 14.sp,
+          );
         }
       },
     );

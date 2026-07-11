@@ -7,10 +7,19 @@ import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/core/widgets/custom_app_bar.dart';
 import 'package:shop/core/widgets/custom_button.dart';
 import 'package:shop/core/widgets/custom_network_image.dart';
+import 'package:shop/features/product/presentation/views/widgets/custom_adder_minuser.dart';
 
-class ProductViewBody extends StatelessWidget {
+class ProductViewBody extends StatefulWidget {
   const ProductViewBody({super.key, this.product});
   final dynamic product;
+
+  @override
+  State<ProductViewBody> createState() => _ProductViewBodyState();
+}
+
+class _ProductViewBodyState extends State<ProductViewBody> {
+  int count = 1;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,7 +37,7 @@ class ProductViewBody extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.r),
                   child: CustomNetworkImage(
                     height: 308.h,
-                    imageUrl: product.imagePath ?? '',
+                    imageUrl: widget.product.imagePath ?? '',
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
@@ -48,14 +57,14 @@ class ProductViewBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  product.name ?? '',
+                  widget.product.name ?? '',
                   style: AppTextStyles.textStyle20.copyWith(
                     color: AppColors.secondary,
                   ),
                 ),
                 SizedBox(height: 18.h),
                 Text(
-                  product.description ?? '',
+                  widget.product.description ?? '',
                   style: AppTextStyles.textStyle12.copyWith(
                     fontWeight: FontWeight.w400,
                   ),
@@ -64,45 +73,39 @@ class ProductViewBody extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '${product.price} \$',
+                      '${widget.product.price * count} \$',
                       style: AppTextStyles.textStyle20.copyWith(
                         color: AppColors.primary,
                       ),
                     ),
                     Spacer(),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        color: AppColors.lightPink,
-                      ),
-                      height: 24.h,
-                      width: 24.w,
-                      child: Icon(
-                        Icons.remove,
-                        color: AppColors.backgroundColor,
-                        size: 16.r,
-                      ),
+                    CustomAdderMinuser(
+                      color: AppColors.lightPink,
+                      onTap: () {
+                        if (count > 1) {
+                          setState(() {
+                            count--;
+                          });
+                        }
+                      },
+                      icon: Icons.remove,
                     ),
                     SizedBox(width: 10.w),
                     Text(
-                      ' 1 ',
+                      count.toString(),
                       style: AppTextStyles.textStyle16.copyWith(
                         color: AppColors.secondary,
                       ),
                     ),
                     SizedBox(width: 10.w),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        color: AppColors.primary,
-                      ),
-                      height: 24.h,
-                      width: 24.w,
-                      child: Icon(
-                        Icons.add,
-                        color: AppColors.backgroundColor,
-                        size: 16.r,
-                      ),
+                    CustomAdderMinuser(
+                      color: AppColors.primary,
+                      onTap: () {
+                        setState(() {
+                          count++;
+                        });
+                      },
+                      icon: Icons.add,
                     ),
                   ],
                 ),

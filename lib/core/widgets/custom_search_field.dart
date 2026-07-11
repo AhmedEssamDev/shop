@@ -31,9 +31,9 @@ class CustomSearchField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: 'Search any Product..',
           hintStyle: AppTextStyles.textStyle13.copyWith(
-            color: AppColors.searchHint,
+            color: AppColors.searchFieldColor,
           ),
-          prefixIcon: const Icon(Icons.search, color: AppColors.searchHint),
+          prefixIcon: const Icon(Icons.search, color: AppColors.searchFieldColor),
           filled: true,
           fillColor: AppColors.white, // Background color
           border: OutlineInputBorder(

@@ -15,5 +15,4 @@ abstract class AppColors {
   static const Color searchFieldColor = Color(0xffBBBBBB);
   static const Color success = Color(0xff149954);
   static const Color error = Colors.red;
-  static const Color searchHint = Color(0xffBBBBBB);
 }
