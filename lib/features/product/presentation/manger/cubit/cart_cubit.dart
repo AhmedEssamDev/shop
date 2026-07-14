@@ -90,12 +90,13 @@ class CartCubit extends Cubit<CartState> {
 
   /// تحميل السلة من SharedPreferences (أول ما التطبيق يفتح)
   void loadCart() {
+    cartItems.clear();
     final String? cartJson = CacheHelper.getValue(CacheKeys.cartItems);
     if (cartJson != null && cartJson.isNotEmpty) {
       final List<dynamic> decoded = jsonDecode(cartJson);
       cartItems = decoded.map((item) => CartItemModel.fromJson(item)).toList();
-      emit(CartUpdated());
     }
+    emit(CartUpdated());
   }
 
   /// حفظ السلة في SharedPreferences (بعد أي تعديل)

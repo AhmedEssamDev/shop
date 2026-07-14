@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shop/core/cache/cache_helper.dart';
@@ -18,6 +17,8 @@ import 'package:shop/features/home/presentation/manger/search/cubit/search_cubit
 import 'package:shop/features/home/presentation/views/main_layout.dart';
 import 'package:shop/features/home/presentation/views/search_view.dart';
 import 'package:shop/features/onboarding/onboarding_screen_view.dart';
+import 'package:shop/features/product/data/repo/place_order_repo_impl.dart';
+import 'package:shop/features/product/presentation/manger/cubit/place_order_cubit.dart';
 import 'package:shop/features/product/presentation/views/product_view.dart';
 import 'package:shop/features/profile/data/repo/user_data_repo_impl.dart';
 import 'package:shop/features/profile/presentation/manger/cubit/update_profile_cubit.dart';
@@ -25,7 +26,6 @@ import 'package:shop/features/profile/presentation/views/edit_profile_view.dart'
 import 'package:shop/features/profile/presentation/views/favorite_view.dart';
 import 'package:shop/features/profile/presentation/views/order_view.dart';
 import 'package:shop/features/profile/presentation/views/settings_view.dart';
-import 'package:shop/features/profile/presentation/views/widgets/edit_profile_view_body.dart';
 import 'package:shop/features/product/presentation/views/cart_view.dart';
 
 abstract class AppRouter {

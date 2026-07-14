@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shop/core/utils/app_assets.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/core/widgets/custom_app_bar.dart';
 import 'package:shop/core/widgets/custom_button.dart';
+import 'package:shop/core/widgets/custom_snack_bar.dart';
 import 'package:shop/features/product/presentation/manger/cubit/cart_cubit.dart';
+import 'package:shop/features/product/presentation/manger/cubit/place_order_cubit.dart';
 import 'package:shop/features/product/presentation/views/widgets/cart_item_widget.dart';
 import 'package:shop/features/product/presentation/views/widgets/cart_summary.dart';
 
@@ -162,14 +165,36 @@ class CartView extends StatelessWidget {
                       SizedBox(height: 16.h),
                       CartSummary(totalPrice: cubit.totalPrice),
                       SizedBox(height: 16.h),
-                      CustomButton(
-                        onPressed: () {
-                          // مكان Checkout لو حبيت تضيفه بعدين
+                      BlocConsumer<PlaceOrderCubit, PlaceOrderState>(
+                        listener: (context, state) {
+                          if (state is PlaceOrderSuccess) {
+                            AppNotifications.showSuccess(
+                              context,
+                              state.placeOrder.message ??
+                                  'Order Placed Successfully',
+                            );
+                            cubit.clearCart();
+                            GoRouter.of(context).pop();
+                          } else if (state is PlaceOrderFailure) {
+                            AppNotifications.showError(context, state.message);
+                          }
                         },
-                        text: 'Checkout',
-                        width: double.infinity,
-                        backgroundColor: AppColors.primary,
-                        textColor: AppColors.white,
+                        builder: (context, state) {
+                          var orderCubit = PlaceOrderCubit.get(context);
+                          return state is PlaceOrderLoading
+                              ? const Center(child: CircularProgressIndicator())
+                              : CustomButton(
+                                  onPressed: () {
+                                    orderCubit.placeOrder(
+                                      items: cubit.cartItems,
+                                    );
+                                  },
+                                  text: 'Checkout',
+                                  width: double.infinity,
+                                  backgroundColor: AppColors.primary,
+                                  textColor: AppColors.white,
+                                );
+                        },
                       ),
                       SizedBox(height: 10.h),
                     ],
