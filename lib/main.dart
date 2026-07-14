@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/cache/cache_helper.dart';
 import 'package:shop/core/network/api_helper.dart';
 import 'package:shop/core/router/app_router.dart';
 import 'package:shop/core/utils/app_colors.dart';
+import 'package:shop/features/product/presentation/manger/cubit/cart_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,21 +25,24 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp.router(
-          theme: ThemeData(
-          progressIndicatorTheme: const ProgressIndicatorThemeData(
-            color: AppColors.primary,
-            circularTrackColor: Colors.grey,
+        return BlocProvider(
+          create: (context) => CartCubit()..loadCart(),
+          child: MaterialApp.router(
+            theme: ThemeData(
+            progressIndicatorTheme: const ProgressIndicatorThemeData(
+              color: AppColors.primary,
+              circularTrackColor: Colors.grey,
+            ),
+            textSelectionTheme: const TextSelectionThemeData(
+              selectionColor: AppColors.borderColor, 
+              cursorColor: AppColors.borderColor,            
+              selectionHandleColor: AppColors.borderColor, 
+            )
+            ),
+            debugShowCheckedModeBanner: false,
+            title: 'shop',
+            routerConfig: AppRouter.appRouter,
           ),
-          textSelectionTheme: const TextSelectionThemeData(
-            selectionColor: AppColors.borderColor, 
-            cursorColor: AppColors.borderColor,            
-            selectionHandleColor: AppColors.borderColor, 
-          )
-          ),
-          debugShowCheckedModeBanner: false,
-          title: 'shop',
-          routerConfig: AppRouter.appRouter,
         );
       },
     );

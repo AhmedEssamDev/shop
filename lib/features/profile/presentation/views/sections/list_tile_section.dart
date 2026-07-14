@@ -33,7 +33,9 @@ class ListTileSection extends StatelessWidget {
           leading: AppSvgs.order,
           title: 'My Orders',
           trailing: AppSvgs.forward,
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(AppRouterKeys.order);
+          },
         ),
         ListTileWidget(
           leading: AppSvgs.favorite,

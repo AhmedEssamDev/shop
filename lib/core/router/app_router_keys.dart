@@ -9,4 +9,6 @@ abstract class AppRouterKeys {
   static const String product = '/product';
   static const String settings = '/settings';
   static const String favorite = '/favorite';
+  static const String order = '/order';
+  static const String cart = '/cart';
 }

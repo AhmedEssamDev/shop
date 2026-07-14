@@ -23,8 +23,10 @@ import 'package:shop/features/profile/data/repo/user_data_repo_impl.dart';
 import 'package:shop/features/profile/presentation/manger/cubit/update_profile_cubit.dart';
 import 'package:shop/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:shop/features/profile/presentation/views/favorite_view.dart';
+import 'package:shop/features/profile/presentation/views/order_view.dart';
 import 'package:shop/features/profile/presentation/views/settings_view.dart';
 import 'package:shop/features/profile/presentation/views/widgets/edit_profile_view_body.dart';
+import 'package:shop/features/product/presentation/views/cart_view.dart';
 
 abstract class AppRouter {
   static String getInitialRoute() {
@@ -97,7 +99,15 @@ abstract class AppRouter {
       GoRoute(
         path: '/favorite',
         builder: (context, state) => const FavoriteView(),
-      )
+      ),
+      GoRoute(
+        path: '/order',
+        builder: (context, state) => const OrderView(),
+      ),
+      GoRoute(
+        path: '/cart',
+        builder: (context, state) => const CartView(),
+      ),
     ],
   );
 }
