@@ -21,7 +21,7 @@ import 'package:shop/features/product/data/repo/place_order_repo_impl.dart';
 import 'package:shop/features/product/presentation/manger/cubit/place_order_cubit.dart';
 import 'package:shop/features/product/presentation/views/product_view.dart';
 import 'package:shop/features/profile/data/repo/user_data_repo_impl.dart';
-import 'package:shop/features/profile/presentation/manger/cubit/update_profile_cubit.dart';
+import 'package:shop/features/profile/presentation/manger/update_user/update_profile_cubit.dart';
 import 'package:shop/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:shop/features/profile/presentation/views/favorite_view.dart';
 import 'package:shop/features/profile/presentation/views/order_view.dart';
@@ -102,7 +102,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: '/order',
-        builder: (context, state) => const OrderView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => PlaceOrderCubit(PlaceOrderRepoImpl(ApiHelper())),
+          child: const OrderView(),
+        ),
       ),
       GoRoute(
         path: '/cart',

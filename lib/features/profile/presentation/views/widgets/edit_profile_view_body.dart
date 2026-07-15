@@ -129,7 +129,7 @@ import 'package:shop/core/widgets/custom_app_bar.dart';
 import 'package:shop/core/widgets/custom_button.dart';
 import 'package:shop/core/widgets/custom_text_field.dart';
 import 'package:shop/features/auth/login/data/model/user_model.dart';
-import 'package:shop/features/profile/presentation/manger/cubit/update_profile_cubit.dart';
+import 'package:shop/features/profile/presentation/manger/update_user/update_profile_cubit.dart';
 import 'package:shop/features/profile/presentation/views/widgets/image_manger.dart';
 import 'package:shop/core/widgets/custom_snack_bar.dart';
 
