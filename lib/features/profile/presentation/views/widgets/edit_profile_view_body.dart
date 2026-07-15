@@ -162,7 +162,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
       listener: (context, state) {
         if (state is UpdateProfileSuccess) {
           AppNotifications.showSuccess(context, 'Profile updated successfully');
-          GoRouter.of(context).pop();
+          GoRouter.of(context).pop(true);
         }
         if (state is UpdateProfileFailure) {
           AppNotifications.showError(context, 'Failed to update profile');

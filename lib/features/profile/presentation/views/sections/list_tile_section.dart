@@ -25,8 +25,10 @@ class ListTileSection extends StatelessWidget {
           onTap: () async {
             final cubit = context.read<UserDataCubit>();
             final userData = cubit.userData;
-            await GoRouter.of(context).push(AppRouterKeys.editProfile, extra: userData);
-            cubit.getUserData(); 
+            final result = await GoRouter.of(context).push(AppRouterKeys.editProfile, extra: userData);
+            if (result == true) {
+              cubit.getUserData(); 
+            } 
           },
         ),
         ListTileWidget(

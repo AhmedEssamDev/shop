@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shop/core/widgets/custom_network_image.dart';
 
 class ImageManager extends StatefulWidget {
   final Widget unselectedImageBuilder;
@@ -33,9 +34,11 @@ class _ImageManagerState extends State<ImageManager> {
         }
         else if (widget.currentImageUrl != null &&
             widget.currentImageUrl!.isNotEmpty) {
-          return CircleAvatar(
-            radius: 50,
-            backgroundImage: NetworkImage(widget.currentImageUrl!),
+          return CustomNetworkImage(
+            imageUrl: widget.currentImageUrl!,
+            width: 100,
+            height: 100,
+            isCircular: true,
           );
         }
         // الصورة الافتراضية

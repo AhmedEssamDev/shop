@@ -30,7 +30,7 @@ class FavoriteViewBody extends StatelessWidget {
                 final favorites =
                     UserDataCubit.get(context).userData?.favoriteProducts ?? [];
 
-                if (state is UserDataLoading || state is FavoriteActionLoading) {
+                if (state is UserDataLoading && UserDataCubit.get(context).userData == null) {
                   return GridView.builder(
                     padding: EdgeInsets.zero,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
