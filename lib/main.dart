@@ -8,6 +8,8 @@ import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/features/product/data/repo/place_order_repo_impl.dart';
 import 'package:shop/features/product/presentation/manger/cubit/cart_cubit.dart';
 import 'package:shop/features/product/presentation/manger/cubit/place_order_cubit.dart';
+import 'package:shop/features/profile/data/repo/user_data_repo_impl.dart';
+import 'package:shop/features/profile/presentation/manger/user_data/user_data_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +27,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => CartCubit()..loadCart()),
         BlocProvider(create: (context) => PlaceOrderCubit(PlaceOrderRepoImpl(ApiHelper()))),
+        BlocProvider(create: (context) => UserDataCubit(UserDataRepoImpl(ApiHelper()))..getUserData()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),

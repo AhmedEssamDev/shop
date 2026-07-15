@@ -13,3 +13,15 @@ final class UserDataError extends UserDataState {
   final String message;
   UserDataError(this.message);
 }
+
+final class FavoriteActionLoading extends UserDataState {}
+
+final class FavoriteActionSuccess extends UserDataState {
+  final String message;
+  FavoriteActionSuccess(this.message);
+}
+
+final class FavoriteActionError extends UserDataState {
+  final String message;
+  FavoriteActionError(this.message);
+}

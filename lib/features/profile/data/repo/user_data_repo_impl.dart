@@ -57,4 +57,22 @@ class UserDataRepoImpl implements UserDataRepo {
       return Left(ApiResponse.fromError(e).message);
     }
   }
+
+  @override
+  Future<Either<String, String>> toggleFavorite(int productId) async {
+    try {
+      var response = await apiHelper.postRequest(
+        endPoint: EndPoints.addToFavorite,
+        data: {'product_id': productId},
+        isFormData: true,
+      );
+      if (response.status) {
+        return Right(response.message);
+      } else {
+        return Left(response.message);
+      }
+    } catch (e) {
+      return Left(ApiResponse.fromError(e).message);
+    }
+  }
 }

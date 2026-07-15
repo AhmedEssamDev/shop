@@ -23,4 +23,15 @@ class UserDataCubit extends Cubit<UserDataState> {
       }
     );
  }
+  void toggleFavorite(int productId) async {
+    emit(FavoriteActionLoading());
+    var result = await userDataRepo.toggleFavorite(productId);
+    result.fold(
+      (errMessage) => emit(FavoriteActionError(errMessage)),
+      (message) {
+        emit(FavoriteActionSuccess(message));
+        getUserData(); // Refresh user data to update favorites list
+      }
+    );
+  }
 }

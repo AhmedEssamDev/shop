@@ -14,5 +14,15 @@ final class OrdersFailure extends OrdersState {
   OrdersFailure(this.errMessage);
 }
 
+final class OrderActionLoading extends OrdersState {}
+final class OrderActionSuccess extends OrdersState {
+  final String message;
+  OrderActionSuccess(this.message);
+}
+final class OrderActionFailure extends OrdersState {
+  final String errMessage;
+  OrderActionFailure(this.errMessage);
+}
+
 
 

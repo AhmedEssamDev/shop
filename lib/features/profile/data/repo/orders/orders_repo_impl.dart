@@ -25,4 +25,33 @@ class OrdersRepoImpl implements OrdersRepo {
     }
   }
 
+  @override
+  Future<Either<String, String>> cancelOrder(int orderId) async {
+    try {
+      var response = await apiHelper.postRequest(
+          endPoint: '${EndPoints.cancelOrder}$orderId');
+      if (response.status) {
+        return right(response.message);
+      } else {
+        return left(response.message);
+      }
+    } catch (e) {
+      return left(ApiResponse.fromError(e).toString());
+    }
+  }
+
+  @override
+  Future<Either<String, String>> completeOrder(int orderId) async {
+    try {
+      var response = await apiHelper.postRequest(
+          endPoint: '${EndPoints.completeOrder}$orderId');
+      if (response.status) {
+        return right(response.message);
+      } else {
+        return left(response.message);
+      }
+    } catch (e) {
+      return left(ApiResponse.fromError(e).toString());
+    }
+  }
 }

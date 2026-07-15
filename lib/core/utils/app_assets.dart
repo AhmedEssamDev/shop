@@ -28,6 +28,7 @@ abstract class AppSvgs {
   static const String love = '${basePath}love.svg';
   static const String love1 = '${basePath}love1.svg';
   static const String location = '${basePath}location.svg';
+  static const String file = '${basePath}file.svg';
 }
 
 

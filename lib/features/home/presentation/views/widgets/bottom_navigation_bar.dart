@@ -14,6 +14,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: AppColors.backgroundColor,
       currentIndex: currentIndex,
       onTap: onTap,
       selectedItemColor: AppColors.primary,
@@ -27,7 +28,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
           label: 'home',
         ),
         BottomNavigationBarItem(
-           activeIcon: SvgPicture.asset(
+          activeIcon: SvgPicture.asset(
             AppSvgs.cart,
             colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
           ),
@@ -35,7 +36,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
           label: 'items',
         ),
         BottomNavigationBarItem(
-           activeIcon: SvgPicture.asset(
+          activeIcon: SvgPicture.asset(
             AppSvgs.profile,
             colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
           ),

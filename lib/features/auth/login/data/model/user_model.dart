@@ -1,6 +1,8 @@
+import 'package:shop/features/home/data/models/products_model.dart';
+
 class UserModel {
   String? email;
-  List<dynamic>? favoriteProducts;
+  List<Products>? favoriteProducts;
   int? id;
   String? imagePath;
   String? name;
@@ -20,7 +22,7 @@ class UserModel {
     if (json['favorite_products'] != null) {
       favoriteProducts = [];
       json['favorite_products'].forEach((v) {
-        favoriteProducts!.add(v);
+        favoriteProducts!.add(Products.fromJson(v));
       });
     }
     id = json['id'];
@@ -33,7 +35,7 @@ class UserModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['email'] = this.email;
     if (this.favoriteProducts != null) {
-      data['favorite_products'] = this.favoriteProducts!.map((v) => v).toList();
+      data['favorite_products'] = this.favoriteProducts!.map((v) => v.toJson()).toList();
     }
     data['id'] = this.id;
     data['image_path'] = this.imagePath;

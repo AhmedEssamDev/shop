@@ -12,4 +12,7 @@ abstract class EndPoints {
   static const String search = 'products/search?q=';
   static const String placeOrder = 'place_order';
   static const String orders = 'orders';
+  static const String cancelOrder = 'orders/cancel/';
+  static const String completeOrder = 'orders/complete/';
+  static const String addToFavorite = 'add_to_favorite';
 }

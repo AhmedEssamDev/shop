@@ -9,6 +9,8 @@ import 'package:shop/core/widgets/custom_button.dart';
 import 'package:shop/core/widgets/custom_network_image.dart';
 import 'package:shop/core/widgets/custom_snack_bar.dart';
 import 'package:shop/features/product/presentation/manger/cubit/cart_cubit.dart';
+import 'package:shop/features/profile/presentation/manger/user_data/user_data_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop/features/product/presentation/views/widgets/custom_adder_minuser.dart';
 
 class ProductViewBody extends StatefulWidget {
@@ -48,7 +50,40 @@ class _ProductViewBodyState extends State<ProductViewBody> {
                   Positioned(
                     top: 10.r,
                     right: 10.r,
-                    child: Container(child: SvgPicture.asset(AppSvgs.love1)),
+                    child: BlocBuilder<UserDataCubit, UserDataState>(
+                      builder: (context, state) {
+                        bool isFavorite = UserDataCubit.get(context)
+                                .userData
+                                ?.favoriteProducts
+                                ?.any((element) => element.id == widget.product.id) ??
+                            false;
+                        return InkWell(
+                          onTap: () {
+                            if (isFavorite) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Already in your favorites ❤️'),
+                                  duration: Duration(seconds: 2),
+                                ),
+                              );
+                            } else if (widget.product.id != null) {
+                              UserDataCubit.get(context)
+                                  .toggleFavorite(widget.product.id!);
+                            }
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(8.r),
+                            decoration: BoxDecoration(
+                              color: AppColors.white.withOpacity(0.5),
+                              shape: BoxShape.circle,
+                            ),
+                            child: SvgPicture.asset(
+                              isFavorite ? AppSvgs.love : AppSvgs.love1,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),

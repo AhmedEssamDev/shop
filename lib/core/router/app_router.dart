@@ -27,6 +27,11 @@ import 'package:shop/features/profile/presentation/views/favorite_view.dart';
 import 'package:shop/features/profile/presentation/views/order_view.dart';
 import 'package:shop/features/profile/presentation/views/settings_view.dart';
 import 'package:shop/features/product/presentation/views/cart_view.dart';
+import 'package:shop/features/profile/data/repo/orders/orders_repo_impl.dart';
+import 'package:shop/features/profile/presentation/manger/orders/cubit/orders_cubit.dart';
+import 'package:shop/features/profile/presentation/views/order_details_view.dart';
+import 'package:shop/features/profile/data/model/order_response_model.dart';
+import 'package:shop/features/profile/presentation/manger/user_data/user_data_cubit.dart';
 
 abstract class AppRouter {
   static String getInitialRoute() {
@@ -103,9 +108,18 @@ abstract class AppRouter {
       GoRoute(
         path: '/order',
         builder: (context, state) => BlocProvider(
-          create: (context) => PlaceOrderCubit(PlaceOrderRepoImpl(ApiHelper())),
+          create: (context) => OrdersCubit(OrdersRepoImpl(ApiHelper()))..getOrders(),
           child: const OrderView(),
         ),
+      ),
+      GoRoute(
+        path: '/order_details',
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>;
+          final order = extra['order'] as Order;
+          final status = extra['status'] as String;
+          return OrderDetailsView(order: order, status: status);
+        },
       ),
       GoRoute(
         path: '/cart',

@@ -8,4 +8,5 @@ abstract class UserDataRepo {
     required String phone,
     String? imagePath,
     });
+  Future<Either<String, String>> toggleFavorite(int productId);
 }

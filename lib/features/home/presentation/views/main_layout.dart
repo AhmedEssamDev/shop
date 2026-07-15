@@ -48,7 +48,10 @@ class _MainLayoutState extends State<MainLayout> {
                 label: Text(count.toString()),
                 child: SvgPicture.asset(
                   AppSvgs.bag,
-                  colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),
+                  colorFilter: ColorFilter.mode(
+                    AppColors.white,
+                    BlendMode.srcIn,
+                  ),
                 ),
               );
             },
