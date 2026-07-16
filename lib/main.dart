@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/cache/cache_helper.dart';
 import 'package:shop/core/network/api_helper.dart';
@@ -10,6 +11,7 @@ import 'package:shop/features/product/presentation/manger/cubit/cart_cubit.dart'
 import 'package:shop/features/product/presentation/manger/cubit/place_order_cubit.dart';
 import 'package:shop/features/profile/data/repo/user_data_repo_impl.dart';
 import 'package:shop/features/profile/presentation/manger/user_data/user_data_cubit.dart';
+import 'package:shop/l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,8 +28,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => CartCubit()..loadCart()),
-        BlocProvider(create: (context) => PlaceOrderCubit(PlaceOrderRepoImpl(ApiHelper()))),
-        BlocProvider(create: (context) => UserDataCubit(UserDataRepoImpl(ApiHelper()))..getUserData()),
+        BlocProvider(
+          create: (context) => PlaceOrderCubit(PlaceOrderRepoImpl(ApiHelper())),
+        ),
+        BlocProvider(
+          create: (context) =>
+              UserDataCubit(UserDataRepoImpl(ApiHelper()))..getUserData(),
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
@@ -36,6 +43,14 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) {
           return MaterialApp.router(
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [Locale('en'), Locale('ar')],
+            locale: const Locale('en'),
             theme: ThemeData(
               progressIndicatorTheme: const ProgressIndicatorThemeData(
                 color: AppColors.primary,
