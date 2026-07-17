@@ -21,7 +21,7 @@ class ProductsGridView extends StatelessWidget {
                 childCount: cubit.bestSeller?.length,
                 (context, index) {
                   final reversedIndex = cubit.bestSeller!.length - 1 - index;
-                  return productCard(product: cubit.bestSeller![reversedIndex]);
+                  return ProductCard(product: cubit.bestSeller![reversedIndex]);
                 },
               ),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

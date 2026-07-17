@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/features/profile/presentation/manger/user_data/user_data_cubit.dart';
-import 'package:shop/features/profile/presentation/views/widgets/custom_avatar.dart';
+
 import 'package:shop/core/widgets/user_data_shimmer.dart';
 import 'package:shop/core/widgets/custom_network_image.dart';
 import 'package:shop/core/utils/context_extension.dart';

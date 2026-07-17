@@ -46,6 +46,5 @@ class BottomNavigationBarWidget extends StatelessWidget {
         ),
       ],
     );
-    ;
   }
 }

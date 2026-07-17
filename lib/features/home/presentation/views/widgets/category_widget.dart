@@ -19,7 +19,7 @@ class CategoryWidget extends StatelessWidget {
         padding: REdgeInsetsDirectional.only(start: 8.0),
         child: Column(
           children: [
-            Container(
+            SizedBox(
               width: 60.w,
               height: 60.h,
               child: CustomNetworkImage(

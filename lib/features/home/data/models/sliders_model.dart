@@ -8,18 +8,18 @@ class SlidersModel {
     if (json['sliders'] != null) {
       sliders = <Sliders>[];
       json['sliders'].forEach((v) {
-        sliders!.add(new Sliders.fromJson(v));
+        sliders!.add(Sliders.fromJson(v));
       });
     }
     status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.sliders != null) {
-      data['sliders'] = this.sliders!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = {};
+    if (sliders != null) {
+      data['sliders'] = sliders!.map((v) => v.toJson()).toList();
     }
-    data['status'] = this.status;
+    data['status'] = status;
     return data;
   }
 }
@@ -40,11 +40,11 @@ class Sliders {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['description'] = this.description;
-    data['id'] = this.id;
-    data['image_path'] = this.imagePath;
-    data['title'] = this.title;
+    final Map<String, dynamic> data = {};
+    data['description'] = description;
+    data['id'] = id;
+    data['image_path'] = imagePath;
+    data['title'] = title;
     return data;
   }
 }

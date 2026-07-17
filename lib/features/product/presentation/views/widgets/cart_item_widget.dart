@@ -8,7 +8,7 @@ import 'package:shop/features/product/presentation/manger/cubit/cart_cubit.dart'
 import 'package:shop/features/product/presentation/views/widgets/custom_adder_minuser.dart';
 
 class CartItemWidget extends StatelessWidget {
-  const CartItemWidget({required this.item});
+  const CartItemWidget({super.key, required this.item});
   final CartItemModel item;
 
   @override

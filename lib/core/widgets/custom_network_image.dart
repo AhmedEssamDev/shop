@@ -10,14 +10,14 @@ class CustomNetworkImage extends StatelessWidget {
   final BorderRadius? borderRadius;
 
   const CustomNetworkImage({
-    Key? key,
+    super.key,
     required this.imageUrl,
     this.width,
     this.height,
     this.fit,
     this.isCircular = false,
     this.borderRadius,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

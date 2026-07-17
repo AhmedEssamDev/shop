@@ -11,14 +11,13 @@ import 'package:shop/features/auth/login/presentation/manger/login_cubit/login_c
 import 'package:shop/features/auth/login/presentation/views/login_view.dart';
 import 'package:shop/features/auth/register/data/repo/register_repo_impl.dart';
 import 'package:shop/features/auth/register/presentation/manger/cubit/register_cubit.dart';
-import 'package:shop/features/auth/register/presentation/views/Register_view.dart';
+import 'package:shop/features/auth/register/presentation/views/register_view.dart';
 import 'package:shop/features/home/data/repos/home_repo_impl.dart';
 import 'package:shop/features/home/presentation/manger/search/cubit/search_cubit.dart';
 import 'package:shop/features/home/presentation/views/main_layout.dart';
 import 'package:shop/features/home/presentation/views/search_view.dart';
 import 'package:shop/features/onboarding/onboarding_screen_view.dart';
-import 'package:shop/features/product/data/repo/place_order_repo_impl.dart';
-import 'package:shop/features/product/presentation/manger/cubit/place_order_cubit.dart';
+
 import 'package:shop/features/product/presentation/views/product_view.dart';
 import 'package:shop/features/profile/data/repo/user_data_repo_impl.dart';
 import 'package:shop/features/profile/presentation/manger/update_user/update_profile_cubit.dart';
@@ -31,7 +30,7 @@ import 'package:shop/features/profile/data/repo/orders/orders_repo_impl.dart';
 import 'package:shop/features/profile/presentation/manger/orders/cubit/orders_cubit.dart';
 import 'package:shop/features/profile/presentation/views/order_details_view.dart';
 import 'package:shop/features/profile/data/model/order_response_model.dart';
-import 'package:shop/features/profile/presentation/manger/user_data/user_data_cubit.dart';
+
 
 abstract class AppRouter {
   static String getInitialRoute() {
@@ -39,8 +38,9 @@ abstract class AppRouter {
     final onboardingDone =
         CacheHelper.getValue(CacheKeys.onboardingDone) ?? false;
     if (!onboardingDone) return AppRouterKeys.onboarding;
-    if (access != null && access.toString().isNotEmpty)
+    if (access != null && access.toString().isNotEmpty) {
       return AppRouterKeys.mainLayout;
+    }
     return AppRouterKeys.authScreen;
   }
 

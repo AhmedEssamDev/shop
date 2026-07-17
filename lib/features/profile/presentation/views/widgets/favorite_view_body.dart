@@ -138,7 +138,7 @@ class _FavoriteProductCard extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.all(6.r),
                         decoration: BoxDecoration(
-                          color: AppColors.white.withOpacity(0.7),
+                          color: AppColors.white.withValues(alpha: 0.7),
                           shape: BoxShape.circle,
                         ),
                         // Already favorited, show filled heart

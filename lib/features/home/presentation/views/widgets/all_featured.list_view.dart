@@ -43,7 +43,7 @@ class AllFeaturedListView extends StatelessWidget {
                       padding: REdgeInsetsDirectional.only(start: 8.0),
                       child: Column(
                         children: [
-                          Container(
+                          SizedBox(
                             width: 60.w,
                             height: 60.h,
                             child: CustomNetworkImage(
@@ -81,7 +81,7 @@ class AllFeaturedListView extends StatelessWidget {
             } else if (state is CategoriesFailure) {
               return Center(child: Text(state.errMessage));
             }
-            return Container();
+            return const SizedBox();
           },
         ),
       ],

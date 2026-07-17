@@ -26,7 +26,7 @@ abstract class CacheHelper {
     }
   }
 
-  static getValue(String key){
+  static dynamic getValue(String key) {
     return prefs.get(key);
   }
 

@@ -74,6 +74,7 @@ class ApiResponse {
     if (response == null) return "No response from server.";
     if (response.data is Map<String, dynamic>) {
       if (response.data["message"] != null) {
+        // ignore: avoid_print
         print("----- Handle Server Error ${response.data["message"]}");
         return response.data["message"];
       }

@@ -8,19 +8,19 @@ class BestSellerModel {
     if (json['best_seller_products'] != null) {
       bestSellerProducts = <BestSellerProducts>[];
       json['best_seller_products'].forEach((v) {
-        bestSellerProducts!.add(new BestSellerProducts.fromJson(v));
+        bestSellerProducts!.add(BestSellerProducts.fromJson(v));
       });
     }
     status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.bestSellerProducts != null) {
+    final Map<String, dynamic> data = {};
+    if (bestSellerProducts != null) {
       data['best_seller_products'] =
-          this.bestSellerProducts!.map((v) => v.toJson()).toList();
+          bestSellerProducts!.map((v) => v.toJson()).toList();
     }
-    data['status'] = this.status;
+    data['status'] = status;
     return data;
   }
 }
@@ -50,7 +50,7 @@ class BestSellerProducts {
   BestSellerProducts.fromJson(Map<String, dynamic> json) {
     bestSeller = json['best_seller'] != null ? (json['best_seller'] as num).toInt() : null;
     category = json['category'] != null
-        ? new Category.fromJson(json['category'])
+        ? Category.fromJson(json['category'])
         : null;
     description = json['description'];
     id = json['id'] != null ? (json['id'] as num).toInt() : null;
@@ -62,18 +62,18 @@ class BestSellerProducts {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['best_seller'] = this.bestSeller;
-    if (this.category != null) {
-      data['category'] = this.category!.toJson();
+    final Map<String, dynamic> data = {};
+    data['best_seller'] = bestSeller;
+    if (category != null) {
+      data['category'] = category!.toJson();
     }
-    data['description'] = this.description;
-    data['id'] = this.id;
-    data['image_path'] = this.imagePath;
-    data['is_favorite'] = this.isFavorite;
-    data['name'] = this.name;
-    data['price'] = this.price;
-    data['rating'] = this.rating;
+    data['description'] = description;
+    data['id'] = id;
+    data['image_path'] = imagePath;
+    data['is_favorite'] = isFavorite;
+    data['name'] = name;
+    data['price'] = price;
+    data['rating'] = rating;
     return data;
   }
 }
@@ -94,11 +94,11 @@ class Category {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['description'] = this.description;
-    data['id'] = this.id;
-    data['image_path'] = this.imagePath;
-    data['title'] = this.title;
+    final Map<String, dynamic> data = {};
+    data['description'] = description;
+    data['id'] = id;
+    data['image_path'] = imagePath;
+    data['title'] = title;
     return data;
   }
 }

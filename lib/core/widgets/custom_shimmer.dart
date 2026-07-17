@@ -7,29 +7,26 @@ class CustomShimmer extends StatelessWidget {
   final ShapeBorder shapeBorder;
 
   const CustomShimmer.rectangular({
-    Key? key,
+    super.key,
     this.width,
     required this.height,
   })  : shapeBorder = const RoundedRectangleBorder(),
-        _borderRadius = null,
-        super(key: key);
+        _borderRadius = null;
 
   const CustomShimmer.circular({
-    Key? key,
+    super.key,
     this.width,
     required this.height,
     this.shapeBorder = const CircleBorder(),
-  })  : _borderRadius = null,
-        super(key: key);
+  })  : _borderRadius = null;
 
   const CustomShimmer.roundedRectangular({
-    Key? key,
+    super.key,
     this.width,
     required this.height,
     required BorderRadius borderRadius,
   })  : shapeBorder = const RoundedRectangleBorder(borderRadius: BorderRadius.zero), // Dummy, we use container decoration
-        _borderRadius = borderRadius,
-        super(key: key);
+        _borderRadius = borderRadius;
 
   final BorderRadius? _borderRadius;
 

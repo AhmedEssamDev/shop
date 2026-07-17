@@ -17,7 +17,6 @@ class UserDataRepoImpl implements UserDataRepo {
       var response = await apiHelper.getRequest(
         endPoint: EndPoints.getuserData,
       );
-      print('--- User Response : ${response.data}');
       if (response.status) {
         var userData = UserModel.fromJson(response.data['user']);
         return Right(userData);

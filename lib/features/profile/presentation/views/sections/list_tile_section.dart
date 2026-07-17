@@ -61,6 +61,7 @@ class ListTileSection extends StatelessWidget {
         SizedBox(height: 32.h),
         ListTileWidget(leading: AppSvgs.logout, title: context.tr.logOut, onTap: () async {
           await CacheHelper.removeValue(CacheKeys.accessToken);
+          if (!context.mounted) return;
           GoRouter.of(context).pushReplacement(AppRouterKeys.authScreen);
         }),
       ],

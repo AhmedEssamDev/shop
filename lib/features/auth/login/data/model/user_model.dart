@@ -32,15 +32,15 @@ class UserModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['email'] = this.email;
-    if (this.favoriteProducts != null) {
-      data['favorite_products'] = this.favoriteProducts!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = {};
+    data['email'] = email;
+    if (favoriteProducts != null) {
+      data['favorite_products'] = favoriteProducts!.map((v) => v.toJson()).toList();
     }
-    data['id'] = this.id;
-    data['image_path'] = this.imagePath;
-    data['name'] = this.name;
-    data['phone'] = this.phone;
+    data['id'] = id;
+    data['image_path'] = imagePath;
+    data['name'] = name;
+    data['phone'] = phone;
     return data;
   }
 }

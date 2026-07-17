@@ -16,7 +16,7 @@ import 'package:shop/features/auth/register/presentation/views/widgets/rich_text
 import 'package:shop/core/utils/context_extension.dart';
 
 class RegisterViewBody extends StatelessWidget {
-  const RegisterViewBody();
+  const RegisterViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +94,7 @@ class RegisterViewBody extends StatelessWidget {
                     prefixIcon: SvgPicture.asset(AppSvgs.password),
                     suffixIcon: GestureDetector(
                       onTap: () {
-                        cubit.PasswordVisibility1();
+                        cubit.passwordVisibility1();
                       },
                       child: Icon(
                         cubit.isPassword1
@@ -118,7 +118,7 @@ class RegisterViewBody extends StatelessWidget {
                     prefixIcon: SvgPicture.asset(AppSvgs.password),
                     suffixIcon: GestureDetector(
                       onTap: () {
-                        cubit.PasswordVisibility2();
+                        cubit.passwordVisibility2();
                       },
                       child: Icon(
                         cubit.isPassword2

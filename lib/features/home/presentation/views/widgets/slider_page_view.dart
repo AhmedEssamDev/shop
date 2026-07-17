@@ -66,7 +66,7 @@ class _SliderPageViewState extends State<SliderPageView> {
               BlocSelector<SlidersCubit, SlidersState, int>(
                 selector: (state) => context.read<SlidersCubit>().currentIndex,
                 builder: (context, currentIndex) {
-                  return pageDots(
+                  return PageDots(
                     currentPage: currentIndex,
                     dotsCount: cubit.sliders!.length,
                     activeColor: AppColors.lightPink,

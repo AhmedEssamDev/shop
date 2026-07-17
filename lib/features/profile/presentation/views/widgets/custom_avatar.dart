@@ -6,7 +6,7 @@ class CustomAvatar extends StatelessWidget {
   final String? imageUrl;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 96.w,
       height: 96.h,
       child: imageUrl != null && imageUrl!.isNotEmpty

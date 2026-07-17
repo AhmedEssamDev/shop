@@ -92,7 +92,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
                         itemCount: cubit.products.length,
                         itemBuilder: (context, index) {
                           final product = cubit.products[index];
-                          return productCard(product: product);
+                          return ProductCard(product: product);
                         },
                       ),
                     ],

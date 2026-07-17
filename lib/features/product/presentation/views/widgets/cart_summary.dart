@@ -4,7 +4,7 @@ import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/core/utils/context_extension.dart';
 
 class CartSummary extends StatelessWidget {
-  const CartSummary({required this.totalPrice});
+  const CartSummary({super.key, required this.totalPrice});
   final int totalPrice;
 
   @override

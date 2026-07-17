@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_stars/flutter_rating_stars.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shop/core/router/app_router_keys.dart';
@@ -13,8 +13,8 @@ import 'package:shop/features/profile/presentation/manger/user_data/user_data_cu
 import 'package:flutter_svg/svg.dart';
 import 'package:shop/core/utils/context_extension.dart';
 
-class productCard extends StatelessWidget {
-  const productCard({super.key, required this.product});
+class ProductCard extends StatelessWidget {
+  const ProductCard({super.key, required this.product});
   final dynamic product;
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class productCard extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.all(6.r),
                             decoration: BoxDecoration(
-                              color: AppColors.white.withOpacity(0.5),
+                              color: AppColors.white.withValues(alpha: 0.5),
                               shape: BoxShape.circle,
                             ),
                             child: SvgPicture.asset(

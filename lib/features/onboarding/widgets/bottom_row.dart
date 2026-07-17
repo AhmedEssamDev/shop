@@ -19,8 +19,7 @@ class BottomRow extends StatelessWidget {
   final PageController pageController;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
+    return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Visibility(
@@ -40,7 +39,7 @@ class BottomRow extends StatelessWidget {
               ),
             ),
           ),
-          pageDots(currentPage: currentPage, activeColor: AppColors.primary,activeSize:Size(40.0.r, 9.0.r),dotsCount: 3,),
+          PageDots(currentPage: currentPage, activeColor: AppColors.primary,activeSize:Size(40.0.r, 9.0.r),dotsCount: 3,),
           TextButton(
             onPressed: () {
               nextPage(context);
@@ -53,11 +52,10 @@ class BottomRow extends StatelessWidget {
             ),
           ),
         ],
-      ),
     );
   }
 
-  void nextPage(context) {
+  void nextPage(BuildContext context) {
     if (currentPage < pages.length - 1) {
       pageController.nextPage(
         duration: const Duration(milliseconds: 300),

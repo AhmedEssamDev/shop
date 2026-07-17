@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/utils/app_colors.dart';
 
-class pageDots extends StatelessWidget {
-  const pageDots({super.key, required this.currentPage,required this.activeColor, required this.activeSize, required this.dotsCount});
+class PageDots extends StatelessWidget {
+  const PageDots({super.key, required this.currentPage,required this.activeColor, required this.activeSize, required this.dotsCount});
 
   final int currentPage;
   final Color activeColor;

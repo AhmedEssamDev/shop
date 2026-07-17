@@ -8,18 +8,18 @@ class ProductsModel {
     if (json['products'] != null) {
       products = <Products>[];
       json['products'].forEach((v) {
-        products!.add(new Products.fromJson(v));
+        products!.add(Products.fromJson(v));
       });
     }
     status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.products != null) {
-      data['products'] = this.products!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = {};
+    if (products != null) {
+      data['products'] = products!.map((v) => v.toJson()).toList();
     }
-    data['status'] = this.status;
+    data['status'] = status;
     return data;
   }
 }
@@ -58,15 +58,15 @@ class Products {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['best_seller'] = this.bestSeller;
-    data['description'] = this.description;
-    data['id'] = this.id;
-    data['image_path'] = this.imagePath;
-    data['is_favorite'] = this.isFavorite;
-    data['name'] = this.name;
-    data['price'] = this.price;
-    data['rating'] = this.rating;
+    final Map<String, dynamic> data = {};
+    data['best_seller'] = bestSeller;
+    data['description'] = description;
+    data['id'] = id;
+    data['image_path'] = imagePath;
+    data['is_favorite'] = isFavorite;
+    data['name'] = name;
+    data['price'] = price;
+    data['rating'] = rating;
     return data;
   }
 }

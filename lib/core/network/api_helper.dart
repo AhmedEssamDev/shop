@@ -17,9 +17,7 @@ class ApiHelper {
         onRequest: (options, handler) {
           logger.d(options.headers.toString());
           logger.d(options.path.toString());
-          if (options.headers != null) {
-            logger.d("Headers: ${options.headers.toString()}");
-          }
+          logger.d("Headers: ${options.headers.toString()}");
           return handler.next(options);
         },
         onResponse: (response, handler) {

@@ -4,7 +4,7 @@ import 'package:shop/core/utils/app_assets.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/features/home/presentation/views/widgets/all_featured_list_view_items.dart';
-import 'package:shop/features/home/presentation/views/widgets/productsGridView_items.dart';
+import 'package:shop/features/home/presentation/views/widgets/products_grid_view_items.dart';
 import 'package:shop/core/utils/context_extension.dart';
 
 class ItemsViewBody extends StatelessWidget {

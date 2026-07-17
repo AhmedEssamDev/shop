@@ -75,7 +75,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
                           child: Container(
                             padding: EdgeInsets.all(8.r),
                             decoration: BoxDecoration(
-                              color: AppColors.white.withOpacity(0.5),
+                              color: AppColors.white.withValues(alpha: 0.5),
                               shape: BoxShape.circle,
                             ),
                             child: SvgPicture.asset(

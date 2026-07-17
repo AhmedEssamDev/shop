@@ -1,5 +1,5 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:shop/features/home/data/models/products_model.dart';
 import 'package:shop/features/home/data/repos/home_repo.dart';
 
@@ -8,7 +8,7 @@ part 'search_state.dart';
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this.homeRepo) : super(SearchInitial());
   
-  static SearchCubit get(context) => BlocProvider.of(context);
+  static SearchCubit get(BuildContext context) => BlocProvider.of(context);
   final HomeRepo homeRepo;
   
   List<Products> products = [];

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop/core/cache/cache_helper.dart';
 import 'package:shop/core/cache/cache_keys.dart';
@@ -10,7 +11,7 @@ part 'cart_state.dart';
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
 
-  static CartCubit get(context) => BlocProvider.of(context);
+  static CartCubit get(BuildContext context) => BlocProvider.of(context);
 
   // اللستة الأساسية اللي فيها كل المنتجات في السلة
   List<CartItemModel> cartItems = [];

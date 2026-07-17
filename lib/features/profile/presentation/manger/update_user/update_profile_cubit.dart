@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:meta/meta.dart';
 import 'package:shop/features/profile/data/repo/user_data_repo.dart';
 
 part 'update_profile_state.dart';
 
 class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   UpdateProfileCubit(this.userDataRepo) : super(UpdateProfileInitial());
-  static UpdateProfileCubit get(context) => BlocProvider.of(context);
+  static UpdateProfileCubit get(BuildContext context) => BlocProvider.of(context);
   final UserDataRepo userDataRepo;
   final nameController = TextEditingController();
   final phoneController = TextEditingController();

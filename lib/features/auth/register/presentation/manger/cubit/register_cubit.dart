@@ -6,7 +6,7 @@ part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit({required this.registerRepo}) : super(RegisterInitial());
-  static RegisterCubit get(context) => BlocProvider.of(context);
+  static RegisterCubit get(BuildContext context) => BlocProvider.of(context);
 
 
   final RegisterRepo registerRepo;
@@ -18,10 +18,12 @@ class RegisterCubit extends Cubit<RegisterState> {
   final phoneController = TextEditingController();
   bool isPassword1 = true;
   bool isPassword2 = true;
-  void PasswordVisibility1(){
+  void passwordVisibility1() {
     isPassword1 = !isPassword1;
     emit(ChangePasswordVisibility());
-  }void PasswordVisibility2(){
+  }
+
+  void passwordVisibility2() {
     isPassword2 = !isPassword2;
     emit(ChangePasswordVisibility());
   }

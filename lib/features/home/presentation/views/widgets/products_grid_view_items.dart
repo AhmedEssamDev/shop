@@ -43,7 +43,7 @@ class ProductsGridViewItems extends StatelessWidget {
               delegate: SliverChildBuilderDelegate(
                 childCount: products.length,
                 (context, index) {
-                  return productCard(
+                  return ProductCard(
                     product: products[index],
                     );
                 },
