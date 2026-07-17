@@ -132,6 +132,7 @@ import 'package:shop/features/auth/login/data/model/user_model.dart';
 import 'package:shop/features/profile/presentation/manger/update_user/update_profile_cubit.dart';
 import 'package:shop/features/profile/presentation/views/widgets/image_manger.dart';
 import 'package:shop/core/widgets/custom_snack_bar.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class EditProfileViewBody extends StatefulWidget {
   final UserModel? userData;
@@ -161,11 +162,11 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
     return BlocConsumer<UpdateProfileCubit, UpdateProfileState>(
       listener: (context, state) {
         if (state is UpdateProfileSuccess) {
-          AppNotifications.showSuccess(context, 'Profile updated successfully');
+          AppNotifications.showSuccess(context, context.tr.profileUpdatedSuccessfully);
           GoRouter.of(context).pop(true);
         }
         if (state is UpdateProfileFailure) {
-          AppNotifications.showError(context, 'Failed to update profile');
+          AppNotifications.showError(context, context.tr.failedToUpdateProfile);
         }
       },
       builder: (context, state) {
@@ -185,7 +186,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CustomAppBar(title: 'Profile'),
+                    CustomAppBar(title: context.tr.profile),
                     SizedBox(height: 25.h),
                     ImageManager(
                       unselectedImageBuilder: CircleAvatar(
@@ -204,18 +205,18 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                     ),
                     SizedBox(height: 66.h),
                     CustomTextField(
-                      validator: (p0) => AppValidators.requiredValidator(p0 ?? '', 'Name'),
+                      validator: (p0) => AppValidators.requiredValidator(p0 ?? '', context.tr.name),
                       controller: cubit.nameController,
                       keyboardType: TextInputType.text,
-                      hintText: 'Full Name',
+                      hintText: context.tr.fullName,
                       prefixIcon: SvgPicture.asset(AppSvgs.person), obscureText: false,
                     ),
                     SizedBox(height: 10.h),
                     CustomTextField(
-                      validator: (p0) => AppValidators.requiredValidator(p0 ?? '', 'Phone'),
+                      validator: (p0) => AppValidators.requiredValidator(p0 ?? '', context.tr.phone),
                       controller: cubit.phoneController,
                       keyboardType: TextInputType.phone,
-                      hintText: 'Phone',
+                      hintText: context.tr.phone,
                       prefixIcon: SvgPicture.asset(AppSvgs.phone), obscureText: false,
                     ),
                     SizedBox(height: 75.h),
@@ -224,7 +225,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                       backgroundColor: AppColors.primary,
                       textColor: AppColors.white,
                       onPressed: () => cubit.updateProfile(),
-                      text: 'Save',
+                      text: context.tr.save,
                     ),
                   ],
                 ),

@@ -9,6 +9,7 @@ import 'package:shop/core/utils/app_assets.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/features/profile/presentation/manger/user_data/user_data_cubit.dart';
 import 'package:shop/features/profile/presentation/views/widgets/list_tile_widget.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class ListTileSection extends StatelessWidget {
   const ListTileSection({super.key});
@@ -20,7 +21,7 @@ class ListTileSection extends StatelessWidget {
         SizedBox(height: 40.h),
         ListTileWidget(
           leading: AppSvgs.profile,
-          title: 'My Profile',
+          title: context.tr.myProfile,
           trailing: AppSvgs.forward,
           onTap: () async {
             final cubit = context.read<UserDataCubit>();
@@ -33,7 +34,7 @@ class ListTileSection extends StatelessWidget {
         ),
         ListTileWidget(
           leading: AppSvgs.order,
-          title: 'My Orders',
+          title: context.tr.myOrders,
           trailing: AppSvgs.forward,
           onTap: () {
             GoRouter.of(context).push(AppRouterKeys.order);
@@ -41,7 +42,7 @@ class ListTileSection extends StatelessWidget {
         ),
         ListTileWidget(
           leading: AppSvgs.favorite,
-          title: 'My Favorites',
+          title: context.tr.myFavorites,
           trailing: AppSvgs.forward,
           onTap: () {
             GoRouter.of(context).push(AppRouterKeys.favorite);
@@ -49,7 +50,7 @@ class ListTileSection extends StatelessWidget {
         ),
         ListTileWidget(
           leading: AppSvgs.setting,
-          title: 'Settings',
+          title: context.tr.settings,
           trailing: AppSvgs.forward,
           onTap: () {
             GoRouter.of(context).push(AppRouterKeys.settings);
@@ -58,7 +59,7 @@ class ListTileSection extends StatelessWidget {
         SizedBox(height: 32.h),
         Container(width: 308.w, height: 1.h, color: AppColors.primary),
         SizedBox(height: 32.h),
-        ListTileWidget(leading: AppSvgs.logout, title: 'Log Out', onTap: () async {
+        ListTileWidget(leading: AppSvgs.logout, title: context.tr.logOut, onTap: () async {
           await CacheHelper.removeValue(CacheKeys.accessToken);
           GoRouter.of(context).pushReplacement(AppRouterKeys.authScreen);
         }),

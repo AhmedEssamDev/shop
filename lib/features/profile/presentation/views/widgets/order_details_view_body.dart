@@ -5,6 +5,7 @@ import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/core/widgets/custom_app_bar.dart';
 import 'package:shop/core/widgets/custom_network_image.dart';
 import 'package:shop/features/profile/data/model/order_response_model.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class OrderDetailsViewBody extends StatelessWidget {
   const OrderDetailsViewBody({
@@ -23,13 +24,13 @@ class OrderDetailsViewBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomAppBar(title: 'Order Details'),
+          CustomAppBar(title: context.tr.orderDetails),
           SizedBox(height: 30.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Order No. ${order.id}',
+                '${context.tr.orderNo}${order.id}',
                 style: AppTextStyles.textStyle20.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -57,7 +58,7 @@ class OrderDetailsViewBody extends StatelessWidget {
               separatorBuilder: (context, index) => SizedBox(height: 16.h),
               itemBuilder: (context, index) {
                 final item = order.items![index];
-                return _buildOrderItem(item);
+                return _buildOrderItem(context, item);
               },
             ),
           ),
@@ -66,7 +67,7 @@ class OrderDetailsViewBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Order Total',
+                context.tr.orderTotal,
                 style: AppTextStyles.textStyle16.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -86,7 +87,7 @@ class OrderDetailsViewBody extends StatelessWidget {
   }
 
 
-  Widget _buildOrderItem(OrderItem item) {
+  Widget _buildOrderItem(BuildContext context, OrderItem item) {
     return Container(
       padding: REdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -130,19 +131,23 @@ class OrderDetailsViewBody extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(height: 6.h),
-                    Row(
-                      children: [
-                        Text(
-                          '${item.rating ?? 0.0}',
-                          style: AppTextStyles.textStyle12,
-                        ),
-                        SizedBox(width: 4.w),
-                        Icon(Icons.star, color: Colors.amber, size: 12.r),
-                      ],
+                    Directionality(
+                      textDirection: TextDirection.ltr,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.star, color: Colors.amber, size: 12.r),
+                          SizedBox(width: 4.w),
+                          Text(
+                            '${item.rating ?? 0.0}',
+                            style: AppTextStyles.textStyle12,
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(height: 4.h),
                     Text(
-                      '${item.quantity ?? 1} item',
+                      '${item.quantity ?? 1} ${context.tr.item}',
                       style: AppTextStyles.textStyle12.copyWith(
                         color: AppColors.borderColor,
                       ),
@@ -166,7 +171,7 @@ class OrderDetailsViewBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Total Order (${item.quantity ?? 1}) :',
+                '${context.tr.totalOrder} (${item.quantity ?? 1}) :',
                 style: AppTextStyles.textStyle12,
               ),
               Text(

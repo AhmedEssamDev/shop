@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shop/core/localization/locale_cubit.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
+import 'package:shop/core/utils/context_extension.dart';
 import 'package:shop/core/widgets/custom_app_bar.dart';
 
 class SettingsViewBody extends StatefulWidget {
@@ -19,20 +22,21 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
       padding: REdgeInsets.symmetric(horizontal: 22, vertical: 50),
       child: Column(
         children: [
-          CustomAppBar(title: 'Settings'),
+          CustomAppBar(title: context.tr.settings),
           SizedBox(height: 65.h),
           Row(
             children: [
               Text(
-                'Language',
+                context.tr.language,
                 style: AppTextStyles.textStyle18.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              const Spacer(),
+              const Spacer(), 
               ToggleButtons(
                 onPressed: (index) {
                   setState(() {
+                    context.read<LocaleCubit>().changeLanguage(index == 0 ? 'ar' : 'en');
                     isSelected =
                         (index == 1); // تعديل منطق الاختيار ليناسب الـ list
                   });

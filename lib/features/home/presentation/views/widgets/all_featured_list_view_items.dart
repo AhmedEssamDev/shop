@@ -6,6 +6,7 @@ import 'package:shop/core/utils/app_text_styles.dart';
 import 'package:shop/features/home/presentation/manger/categories/cubit/categories_cubit.dart';
 import 'package:shop/features/home/presentation/views/widgets/category_widget.dart';
 import 'package:shop/core/widgets/category_shimmer.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class AllFeaturedListViewItems extends StatelessWidget {
   const AllFeaturedListViewItems({super.key});
@@ -19,7 +20,7 @@ class AllFeaturedListViewItems extends StatelessWidget {
           child: Align(
             alignment: AlignmentDirectional.topStart,
             child: Text(
-              'All Featured',
+              context.tr.allFeatured,
               style: AppTextStyles.textStyle18.copyWith(
                 color: AppColors.secondary,
               ),

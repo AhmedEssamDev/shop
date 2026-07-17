@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class CartSummary extends StatelessWidget {
   const CartSummary({required this.totalPrice});
@@ -12,7 +13,7 @@ class CartSummary extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Total, plus taxes and delivery:',
+          context.tr.totalPlusTaxes,
           style: AppTextStyles.textStyle13.copyWith(),
         ),
         Text(

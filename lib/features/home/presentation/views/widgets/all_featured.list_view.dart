@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
+import 'package:shop/core/utils/context_extension.dart';
 import 'package:shop/features/home/presentation/manger/categories/cubit/categories_cubit.dart';
 import 'package:shop/core/widgets/category_shimmer.dart';
 import 'package:shop/core/widgets/custom_network_image.dart';
+
 class AllFeaturedListView extends StatelessWidget {
   const AllFeaturedListView({super.key});
 
@@ -18,7 +20,7 @@ class AllFeaturedListView extends StatelessWidget {
           child: Align(
             alignment: AlignmentDirectional.topStart,
             child: Text(
-              'All Featured',
+              context.tr.allFeatured,
               style: AppTextStyles.textStyle18.copyWith(
                 color: AppColors.secondary,
               ),

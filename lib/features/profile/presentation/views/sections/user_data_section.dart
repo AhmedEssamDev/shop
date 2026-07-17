@@ -7,6 +7,8 @@ import 'package:shop/features/profile/presentation/manger/user_data/user_data_cu
 import 'package:shop/features/profile/presentation/views/widgets/custom_avatar.dart';
 import 'package:shop/core/widgets/user_data_shimmer.dart';
 import 'package:shop/core/widgets/custom_network_image.dart';
+import 'package:shop/core/utils/context_extension.dart';
+
 class UserDataSection extends StatelessWidget {
   const UserDataSection({super.key});
 
@@ -23,7 +25,7 @@ class UserDataSection extends StatelessWidget {
         return Column(
           children: [
             SizedBox(height: 23.h),
-            Text('Profile', style: AppTextStyles.textStyle18),
+            Text(context.tr.profile, style: AppTextStyles.textStyle18),
             SizedBox(height: 32.h),
             (cubit.userData?.imagePath != null && cubit.userData!.imagePath!.isNotEmpty)
                 ? CustomNetworkImage(
@@ -39,7 +41,7 @@ class UserDataSection extends StatelessWidget {
                   ),
             SizedBox(height: 19.h),
             Text(
-              cubit.userData?.name ?? 'Unknown',
+              cubit.userData?.name ?? context.tr.unknown,
               style: AppTextStyles.textStyle18.copyWith(
                 color: AppColors.primary,
               ),

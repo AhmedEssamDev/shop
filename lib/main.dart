@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/cache/cache_helper.dart';
+import 'package:shop/core/localization/locale_cubit.dart';
 import 'package:shop/core/network/api_helper.dart';
 import 'package:shop/core/router/app_router.dart';
 import 'package:shop/core/utils/app_colors.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => LocaleCubit()),
         BlocProvider(create: (context) => CartCubit()..loadCart()),
         BlocProvider(
           create: (context) => PlaceOrderCubit(PlaceOrderRepoImpl(ApiHelper())),
@@ -42,29 +44,33 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
-          return MaterialApp.router(
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: const [Locale('en'), Locale('ar')],
-            locale: const Locale('en'),
-            theme: ThemeData(
-              progressIndicatorTheme: const ProgressIndicatorThemeData(
-                color: AppColors.primary,
-                circularTrackColor: Colors.grey,
-              ),
-              textSelectionTheme: const TextSelectionThemeData(
-                selectionColor: AppColors.borderColor,
-                cursorColor: AppColors.borderColor,
-                selectionHandleColor: AppColors.borderColor,
-              ),
-            ),
-            debugShowCheckedModeBanner: false,
-            title: 'shop',
-            routerConfig: AppRouter.appRouter,
+          return BlocBuilder<LocaleCubit, Locale>(
+            builder: (context, localeState) {
+              return MaterialApp.router(
+                localizationsDelegates: const [
+                  AppLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: const [Locale('en'), Locale('ar')],
+                locale: localeState,
+                theme: ThemeData(
+                  progressIndicatorTheme: const ProgressIndicatorThemeData(
+                    color: AppColors.primary,
+                    circularTrackColor: Colors.grey,
+                  ),
+                  textSelectionTheme: const TextSelectionThemeData(
+                    selectionColor: AppColors.borderColor,
+                    cursorColor: AppColors.borderColor,
+                    selectionHandleColor: AppColors.borderColor,
+                  ),
+                ),
+                debugShowCheckedModeBanner: false,
+                title: 'shop',
+                routerConfig: AppRouter.appRouter,
+              );
+            },
           );
         },
       ),

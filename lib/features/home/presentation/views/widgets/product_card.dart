@@ -11,6 +11,7 @@ import 'package:shop/features/home/presentation/views/widgets/custom_rating_star
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop/features/profile/presentation/manger/user_data/user_data_cubit.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class productCard extends StatelessWidget {
   const productCard({super.key, required this.product});
@@ -55,9 +56,9 @@ class productCard extends StatelessWidget {
                           onTap: () {
                             if (isFavorite) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Already in your favorites ❤️'),
-                                  duration: Duration(seconds: 2),
+                                SnackBar(
+                                  content: Text(context.tr.alreadyInFavorites),
+                                  duration: const Duration(seconds: 2),
                                 ),
                               );
                             } else if (product.id != null) {

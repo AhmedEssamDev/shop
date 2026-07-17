@@ -19,7 +19,7 @@ class ListTileWidget extends StatelessWidget {
           title,
           style: AppTextStyles.textStyle18.copyWith(fontWeight: FontWeight.w500),
         ),
-        trailing: trailing != null ? SvgPicture.asset(trailing!) : null,
+        trailing: trailing != null ? SvgPicture.asset(trailing!, matchTextDirection: true) : null,
       ),
     );
   }

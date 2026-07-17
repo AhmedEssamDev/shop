@@ -14,11 +14,11 @@ class CustomAppBar extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         const SizedBox(width: double.infinity),
-        Positioned(left: 0, child: GestureDetector(
+        PositionedDirectional(start: 0, child: GestureDetector(
           onTap: () {
             GoRouter.of(context).pop();
           },
-          child: SvgPicture.asset(AppSvgs.back))),
+          child: SvgPicture.asset(AppSvgs.back, matchTextDirection: true))),
         Text(title, style: AppTextStyles.textStyle18),
       ],
     );

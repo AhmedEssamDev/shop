@@ -8,7 +8,9 @@ class CustomRatingStars extends StatelessWidget {
   final dynamic product;
   @override
   Widget build(BuildContext context) {
-    return RatingStars(
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: RatingStars(
       value: (product.rating ?? 0).toDouble(),
       starCount: 5,
       starSize: 14,
@@ -56,6 +58,7 @@ class CustomRatingStars extends StatelessWidget {
           );
         }
       },
-    );
+    ),
+  );
   }
 }

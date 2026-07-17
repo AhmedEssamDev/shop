@@ -56,15 +56,19 @@ class CartItemWidget extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: 6.h),
-                Row(
-                  children: [
-                    Text(
-                    item.rating.toString(),
-                    style: AppTextStyles.textStyle13
-                    ),
-                    SizedBox(width: 4.w),
-                    Icon(Icons.star,color: AppColors.gold,size: 15.r)
-                  ]
+                Directionality(
+                  textDirection: TextDirection.ltr,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.star, color: AppColors.gold, size: 15.r),
+                      SizedBox(width: 4.w),
+                      Text(
+                        item.rating.toString(),
+                        style: AppTextStyles.textStyle13,
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 6.h),
                 Text(

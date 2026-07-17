@@ -12,6 +12,7 @@ import 'package:shop/core/widgets/custom_network_image.dart';
 import 'package:shop/features/home/data/models/products_model.dart';
 import 'package:shop/features/profile/presentation/manger/user_data/user_data_cubit.dart';
 import 'package:shop/core/widgets/product_card_shimmer.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class FavoriteViewBody extends StatelessWidget {
   const FavoriteViewBody({super.key});
@@ -22,7 +23,7 @@ class FavoriteViewBody extends StatelessWidget {
       padding: REdgeInsets.symmetric(horizontal: 22, vertical: 50),
       child: Column(
         children: [
-          const CustomAppBar(title: 'My Favorites'),
+          CustomAppBar(title: context.tr.myFavorites),
           SizedBox(height: 20.h),
           Expanded(
             child: BlocBuilder<UserDataCubit, UserDataState>(
@@ -57,14 +58,14 @@ class FavoriteViewBody extends StatelessWidget {
                       ),
                       SizedBox(height: 20.h),
                       Text(
-                        'No favorites yet!',
+                        context.tr.noFavoritesYet,
                         style: AppTextStyles.textStyle16.copyWith(
                           color: AppColors.borderColor,
                         ),
                       ),
                       SizedBox(height: 8.h),
                       Text(
-                        'Tap the heart icon on any product\nto add it to your favorites.',
+                        context.tr.tapHeartIcon,
                         textAlign: TextAlign.center,
                         style: AppTextStyles.textStyle12.copyWith(
                           color: AppColors.borderColor,

@@ -13,6 +13,7 @@ import 'package:shop/core/widgets/custom_snack_bar.dart';
 import 'package:shop/features/profile/presentation/manger/orders/cubit/orders_cubit.dart';
 import 'package:shop/features/profile/data/model/order_response_model.dart';
 import 'package:shop/core/widgets/order_card_shimmer.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class OrderViewBody extends StatefulWidget {
   const OrderViewBody({super.key});
@@ -23,10 +24,10 @@ class OrderViewBody extends StatefulWidget {
 
 class _OrderViewBodyState extends State<OrderViewBody> {
   int _selectedIndex = 0;
-  final List<String> _tabs = ['Active', 'Completed', 'Cancelled'];
 
   @override
   Widget build(BuildContext context) {
+    final List<String> tabs = [context.tr.active, context.tr.completed, context.tr.cancelled];
     return BlocConsumer<OrdersCubit, OrdersState>(
       listener: (context, state) {
         if (state is OrderActionSuccess) {
@@ -44,14 +45,14 @@ class _OrderViewBodyState extends State<OrderViewBody> {
             width: double.infinity,
             child: Column(
               children: [
-                const CustomAppBar(title: 'My Orders'),
+                CustomAppBar(title: context.tr.myOrders),
                 SizedBox(height: 40.h),
                 SizedBox(
                   width: double.infinity,
                   height: 28.h,
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
-                    itemCount: _tabs.length,
+                    itemCount: tabs.length,
                     separatorBuilder: (context, index) => SizedBox(width: 10.w),
                     itemBuilder: (context, index) {
                       final isSelected = _selectedIndex == index;
@@ -69,7 +70,7 @@ class _OrderViewBodyState extends State<OrderViewBody> {
                           ),
                           child: Center(
                             child: Text(
-                              _tabs[index],
+                              tabs[index],
                               style: AppTextStyles.textStyle18.copyWith(
                                 color: isSelected ? AppColors.white : AppColors.primary,
                                 fontWeight: FontWeight.w500,
@@ -127,7 +128,7 @@ class _OrderViewBodyState extends State<OrderViewBody> {
                             ),
                             SizedBox(height: 20.h),
                             Text(
-                              'You don\'t have any\n${_tabs[_selectedIndex].toLowerCase()} orders at this\ntime',
+                              '${context.tr.youDontHaveAny}\n${tabs[_selectedIndex].toLowerCase()} ${context.tr.ordersAtThisTime}',
                               textAlign: TextAlign.center,
                               style: AppTextStyles.textStyle18.copyWith(
                                 color: AppColors.primary,
@@ -154,7 +155,7 @@ class _OrderViewBodyState extends State<OrderViewBody> {
                                 onTap: () {
                                   GoRouter.of(context).push(AppRouterKeys.orderDetails, extra: {
                                     'order': order,
-                                    'status': _tabs[_selectedIndex],
+                                    'status': tabs[_selectedIndex],
                                   });
                                 },
                                 child: Container(
@@ -222,7 +223,7 @@ class _OrderViewBodyState extends State<OrderViewBody> {
                                                 ),
                                               ),
                                               Text(
-                                                '${order.items?.length ?? 0} item${(order.items?.length ?? 0) > 1 ? 's' : ''}',
+                                                '${order.items?.length ?? 0} ${(order.items?.length ?? 0) > 1 ? context.tr.items : context.tr.item}',
                                                 style: AppTextStyles.textStyle12.copyWith(
                                                   color: AppColors.borderColor,
                                                   fontSize: 10.sp,
@@ -248,7 +249,7 @@ class _OrderViewBodyState extends State<OrderViewBody> {
                                                       ),
                                                       child: Center(
                                                         child: Text(
-                                                          'Cancel',
+                                                          context.tr.cancel,
                                                           style: AppTextStyles.textStyle12.copyWith(
                                                             color: AppColors.white,
                                                             fontWeight: FontWeight.bold,
@@ -272,7 +273,7 @@ class _OrderViewBodyState extends State<OrderViewBody> {
                                                       ),
                                                       child: Center(
                                                         child: Text(
-                                                          'Complete',
+                                                          context.tr.complete,
                                                           style: AppTextStyles.textStyle12.copyWith(
                                                             color: AppColors.white,
                                                             fontWeight: FontWeight.bold,
@@ -290,7 +291,7 @@ class _OrderViewBodyState extends State<OrderViewBody> {
                                                 Icon(Icons.check_circle_outline, color: Colors.green, size: 16.r),
                                                 SizedBox(width: 4.w),
                                                 Text(
-                                                  'Order delivered',
+                                                  context.tr.orderDelivered,
                                                   style: AppTextStyles.textStyle12.copyWith(color: AppColors.primary),
                                                 ),
                                               ],
@@ -301,7 +302,7 @@ class _OrderViewBodyState extends State<OrderViewBody> {
                                                 Icon(Icons.cancel_outlined, color: Colors.red, size: 16.r),
                                                 SizedBox(width: 4.w),
                                                 Text(
-                                                  'Order Canceled',
+                                                  context.tr.orderCanceled,
                                                   style: AppTextStyles.textStyle12.copyWith(color: AppColors.primary),
                                                 ),
                                               ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop/core/utils/app_assets.dart';
 import 'package:shop/core/utils/app_colors.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
   const BottomNavigationBarWidget({
@@ -25,7 +26,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
             colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
           ),
           icon: SvgPicture.asset(AppSvgs.home),
-          label: 'home',
+          label: context.tr.home,
         ),
         BottomNavigationBarItem(
           activeIcon: SvgPicture.asset(
@@ -33,7 +34,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
             colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
           ),
           icon: SvgPicture.asset(AppSvgs.cart),
-          label: 'items',
+          label: context.tr.items,
         ),
         BottomNavigationBarItem(
           activeIcon: SvgPicture.asset(
@@ -41,7 +42,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
             colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
           ),
           icon: SvgPicture.asset(AppSvgs.profile),
-          label: 'profile',
+          label: context.tr.profile,
         ),
       ],
     );

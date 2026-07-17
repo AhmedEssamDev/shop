@@ -12,6 +12,7 @@ import 'package:shop/features/product/presentation/manger/cubit/cart_cubit.dart'
 import 'package:shop/features/profile/presentation/manger/user_data/user_data_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop/features/product/presentation/views/widgets/custom_adder_minuser.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class ProductViewBody extends StatefulWidget {
   const ProductViewBody({super.key, this.product});
@@ -32,7 +33,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            CustomAppBar(title: 'Product'),
+            CustomAppBar(title: context.tr.product),
             SizedBox(height: 27.h),
             Padding(
               padding: REdgeInsets.symmetric(horizontal: 15),
@@ -61,9 +62,9 @@ class _ProductViewBodyState extends State<ProductViewBody> {
                           onTap: () {
                             if (isFavorite) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Already in your favorites ❤️'),
-                                  duration: Duration(seconds: 2),
+                                SnackBar(
+                                  content: Text(context.tr.alreadyInFavorites),
+                                  duration: const Duration(seconds: 2),
                                 ),
                               );
                             } else if (widget.product.id != null) {
@@ -160,10 +161,10 @@ class _ProductViewBodyState extends State<ProductViewBody> {
                       );
                       AppNotifications.showSuccess(
                         context,
-                        'Added to cart successfully!',
+                        context.tr.addedToCartSuccessfully,
                       );
                     },
-                    text: 'Add to Cart',
+                    text: context.tr.addToCart,
                     width: double.infinity,
                     backgroundColor: AppColors.primary,
                     textColor: AppColors.white,

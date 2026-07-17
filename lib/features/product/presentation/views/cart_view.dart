@@ -13,6 +13,7 @@ import 'package:shop/features/product/presentation/manger/cubit/cart_cubit.dart'
 import 'package:shop/features/product/presentation/manger/cubit/place_order_cubit.dart';
 import 'package:shop/features/product/presentation/views/widgets/cart_item_widget.dart';
 import 'package:shop/features/product/presentation/views/widgets/cart_summary.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
@@ -25,13 +26,13 @@ class CartView extends StatelessWidget {
         padding: REdgeInsets.symmetric(horizontal: 22, vertical: 50),
         child: Column(
           children: [
-            const CustomAppBar(title: 'Cart'),
+            CustomAppBar(title: context.tr.cart),
             SizedBox(height: 36.h),
             Row(
               children: [
                 SvgPicture.asset(AppSvgs.location),
                 SizedBox(width: 8.w),
-                Text('Delivery Address', style: AppTextStyles.textStyle13),
+                Text(context.tr.deliveryAddress, style: AppTextStyles.textStyle13),
               ],
             ),
             SizedBox(height: 10.h),
@@ -62,10 +63,10 @@ class CartView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Address', style: AppTextStyles.textStyle12),
+                      Text(context.tr.address, style: AppTextStyles.textStyle12),
                       SizedBox(height: 8.h),
                       Text(
-                        'Pick the address from map',
+                        context.tr.pickAddress,
                         style: AppTextStyles.textStyle12.copyWith(
                           fontWeight: FontWeight.w400,
                         ),
@@ -126,7 +127,7 @@ class CartView extends StatelessWidget {
                           ),
                           SizedBox(height: 16.h),
                           Text(
-                            'Your cart is empty',
+                            context.tr.yourCartIsEmpty,
                             style: AppTextStyles.textStyle18.copyWith(
                               color: AppColors.borderColor,
                             ),
@@ -142,7 +143,7 @@ class CartView extends StatelessWidget {
                       Padding(
                         padding: REdgeInsets.only(top: 20.h, bottom: 10),
                         child: Text(
-                          'Shopping List',
+                          context.tr.shoppingList,
                           style: AppTextStyles.textStyle13.copyWith(
                             fontWeight: FontWeight.bold,
                             color: AppColors.secondary,
@@ -171,7 +172,7 @@ class CartView extends StatelessWidget {
                             AppNotifications.showSuccess(
                               context,
                               state.placeOrder.message ??
-                                  'Order Placed Successfully',
+                                  context.tr.orderPlacedSuccessfully,
                             );
                             cubit.clearCart();
                             GoRouter.of(context).pop();
@@ -189,7 +190,7 @@ class CartView extends StatelessWidget {
                                       items: cubit.cartItems,
                                     );
                                   },
-                                  text: 'Checkout',
+                                  text: context.tr.checkout,
                                   width: double.infinity,
                                   backgroundColor: AppColors.primary,
                                   textColor: AppColors.white,
