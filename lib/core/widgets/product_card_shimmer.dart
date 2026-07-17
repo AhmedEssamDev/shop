@@ -28,7 +28,7 @@ class ProductCardShimmer extends StatelessWidget {
           ),
           SizedBox(height: 8.h),
           Padding(
-            padding: REdgeInsets.only(left: 8),
+            padding: REdgeInsetsDirectional.only(start: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -16,7 +16,7 @@ class AllFeaturedListView extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: REdgeInsets.only(left: 8),
+          padding: REdgeInsetsDirectional.only(start: 8),
           child: Align(
             alignment: AlignmentDirectional.topStart,
             child: Text(
@@ -40,7 +40,7 @@ class AllFeaturedListView extends StatelessWidget {
                   itemCount: cubit.categories!.length,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: REdgeInsets.only(left: 8.0),
+                      padding: REdgeInsetsDirectional.only(start: 8.0),
                       child: Column(
                         children: [
                           Container(

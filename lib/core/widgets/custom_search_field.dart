@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class CustomSearchField extends StatelessWidget {
   const CustomSearchField({super.key, this.readOnly = false, this.onTap, this.onChanged, this.controller});
@@ -29,7 +30,7 @@ class CustomSearchField extends StatelessWidget {
         onTap: onTap,
         onChanged: onChanged,
         decoration: InputDecoration(
-          hintText: 'Search any Product..',
+          hintText: context.tr.searchAnyProduct,
           hintStyle: AppTextStyles.textStyle13.copyWith(
             color: AppColors.searchFieldColor,
           ),

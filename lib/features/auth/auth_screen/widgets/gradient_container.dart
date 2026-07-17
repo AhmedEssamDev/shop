@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shop/core/router/app_router_keys.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
+import 'package:shop/core/utils/context_extension.dart';
 import 'package:shop/core/widgets/custom_button.dart';
 
 class GradientContainer extends StatelessWidget {
@@ -27,13 +28,13 @@ class GradientContainer extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'You want\nAuthentic, here\nyou go!',
+            context.tr.authHeadline,
             textAlign: TextAlign.center,
             style: AppTextStyles.textStyle34.copyWith(color: AppColors.white),
           ),
           SizedBox(height: 24.h),
           Text(
-            'Find it here, buy it now!',
+            context.tr.authSubtitle,
             style: AppTextStyles.textStyle13.copyWith(
               color: AppColors.lightgrey,
               fontWeight: FontWeight.w400,
@@ -47,7 +48,7 @@ class GradientContainer extends StatelessWidget {
             width: 279.w,
             backgroundColor: AppColors.primary,
             textColor: AppColors.white,
-            text: 'Login',
+            text: context.tr.login,
           ),
           SizedBox(height: 15.h),
           CustomButton(
@@ -57,7 +58,7 @@ class GradientContainer extends StatelessWidget {
             width: 279.w,
             backgroundColor: AppColors.white,
             textColor: AppColors.primary,
-            text: 'Register',
+            text: context.tr.register,
           ),
         ],
       ),

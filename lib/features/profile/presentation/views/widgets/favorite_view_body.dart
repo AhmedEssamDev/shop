@@ -155,7 +155,7 @@ class _FavoriteProductCard extends StatelessWidget {
             ),
             SizedBox(height: 8.h),
             Padding(
-              padding: REdgeInsets.only(left: 8, right: 8, bottom: 8),
+              padding: REdgeInsetsDirectional.only(start: 8, end: 8, bottom: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

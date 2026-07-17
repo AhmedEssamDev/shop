@@ -91,7 +91,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
             ),
             SizedBox(height: 36.h),
             Padding(
-              padding: REdgeInsets.only(left: 8),
+              padding: REdgeInsetsDirectional.only(start: 8, end: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

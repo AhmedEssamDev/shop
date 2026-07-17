@@ -16,7 +16,7 @@ class CategoryWidget extends StatelessWidget {
         cubit.changeIndex(index);
       },
       child: Padding(
-        padding: REdgeInsets.only(left: 8.0),
+        padding: REdgeInsetsDirectional.only(start: 8.0),
         child: Column(
           children: [
             Container(

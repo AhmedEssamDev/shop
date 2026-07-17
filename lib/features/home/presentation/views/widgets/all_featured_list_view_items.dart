@@ -16,7 +16,7 @@ class AllFeaturedListViewItems extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: REdgeInsets.only(left: 8),
+          padding: REdgeInsetsDirectional.only(start: 8),
           child: Align(
             alignment: AlignmentDirectional.topStart,
             child: Text(

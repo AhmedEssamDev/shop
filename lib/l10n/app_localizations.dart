@@ -397,6 +397,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Best Sellers'**
   String get bestSellers;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @searchAnyProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Search any Product..'**
+  String get searchAnyProduct;
+
+  /// No description provided for @createAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an\naccount!'**
+  String get createAccount;
+
+  /// No description provided for @welcomeBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome\nBack!'**
+  String get welcomeBack;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @confirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPassword;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @createAccountBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get createAccountBtn;
+
+  /// No description provided for @welcomeBackMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome Back {name}!'**
+  String welcomeBackMsg(Object name);
+
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
+
+  /// No description provided for @authHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'You want\nAuthentic, here\nyou go!'**
+  String get authHeadline;
+
+  /// No description provided for @authSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find it here, buy it now!'**
+  String get authSubtitle;
+
+  /// No description provided for @agreeText.
+  ///
+  /// In en, this message translates to:
+  /// **'By clicking the'**
+  String get agreeText;
+
+  /// No description provided for @agreeRegister.
+  ///
+  /// In en, this message translates to:
+  /// **' Register '**
+  String get agreeRegister;
+
+  /// No description provided for @agreeOffer.
+  ///
+  /// In en, this message translates to:
+  /// **'button, you agree\nto the public offer'**
+  String get agreeOffer;
 }
 
 class _AppLocalizationsDelegate

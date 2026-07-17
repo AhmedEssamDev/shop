@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
+import 'package:shop/core/utils/context_extension.dart';
 import 'package:shop/core/widgets/custom_app_bar.dart';
 import 'package:shop/core/widgets/custom_search_field.dart';
+import 'package:shop/core/widgets/product_card_shimmer.dart';
 import 'package:shop/features/home/presentation/manger/search/cubit/search_cubit.dart';
 import 'package:shop/features/home/presentation/views/widgets/product_card.dart';
-import 'package:shop/core/widgets/product_card_shimmer.dart';
 
 class SearchViewBody extends StatefulWidget {
   const SearchViewBody({super.key});
@@ -24,7 +25,6 @@ class _SearchViewBodyState extends State<SearchViewBody> {
   }
 
   @override
-  @override
   Widget build(BuildContext context) {
     var cubit = SearchCubit.get(context);
 
@@ -32,7 +32,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
       padding: REdgeInsets.symmetric(horizontal: 22, vertical: 50),
       child: Column(
         children: [
-          CustomAppBar(title: 'Search'),
+          CustomAppBar(title: context.tr.search),
           SizedBox(height: 34.h),
           CustomSearchField(
             controller: searchController,
@@ -73,7 +73,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
                       Align(
                         alignment: AlignmentDirectional.topStart,
                         child: Text(
-                          '${cubit.products.length} items',
+                          '${cubit.products.length} ${context.tr.items}',
                           style: AppTextStyles.textStyle18,
                         ),
                       ),

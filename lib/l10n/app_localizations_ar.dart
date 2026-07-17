@@ -154,8 +154,58 @@ class AppLocalizationsAr extends AppLocalizations {
   String get home => 'الرئيسية';
 
   @override
-  String get allFeatured => 'الكل المميز';
+  String get allFeatured => 'المنتجات المميزة';
 
   @override
   String get bestSellers => 'الأكثر مبيعاً';
+
+  @override
+  String get search => 'البحث';
+
+  @override
+  String get searchAnyProduct => 'ابحث عن أي منتج..';
+
+  @override
+  String get createAccount => 'إنشاء\nحساب!';
+
+  @override
+  String get welcomeBack => 'مرحبا\nبعودتك!';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get password => 'كلمة المرور';
+
+  @override
+  String get confirmPassword => 'تأكيد كلمة المرور';
+
+  @override
+  String get login => 'تسجيل الدخول';
+
+  @override
+  String get createAccountBtn => 'إنشاء حساب';
+
+  @override
+  String welcomeBackMsg(Object name) {
+    return 'مرحباً بعودتك $name!';
+  }
+
+  @override
+  String get register => 'إنشاء حساب';
+
+  @override
+  String get authHeadline => 'تريد الأصلي؟\nهنا تجده!';
+
+  @override
+  String get authSubtitle => 'ابحث هنا، اشترِ الآن!';
+
+  @override
+  String get agreeText => 'بالنقر على زر';
+
+  @override
+  String get agreeRegister => ' إنشاء حساب ';
+
+  @override
+  String get agreeOffer => 'توافق على العرض العام';
 }

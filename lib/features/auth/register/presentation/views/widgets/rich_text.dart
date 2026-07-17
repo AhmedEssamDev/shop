@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop/core/utils/app_colors.dart';
 import 'package:shop/core/utils/app_text_styles.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class RichTextWidget extends StatelessWidget {
   const RichTextWidget({super.key});
@@ -9,20 +10,20 @@ class RichTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text.rich(
       TextSpan(
-        text: 'By clicking the',
+        text: context.tr.agreeText,
         style: AppTextStyles.textStyle12.copyWith(
           color: AppColors.nameFieldColor,
           fontWeight: FontWeight.w400,
         ),
         children: [
           TextSpan(
-            text: ' Register ',
+            text: context.tr.agreeRegister,
             style: AppTextStyles.textStyle12.copyWith(
               color: AppColors.primary,
               fontWeight: FontWeight.w400,
             ),
           ),
-          TextSpan(text: 'button, you agree\nto the public offer'),
+          TextSpan(text: context.tr.agreeOffer),
         ],
       ),
     );

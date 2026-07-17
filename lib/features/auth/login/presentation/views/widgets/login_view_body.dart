@@ -12,6 +12,7 @@ import 'package:shop/core/widgets/custom_button.dart';
 import 'package:shop/core/widgets/custom_snack_bar.dart';
 import 'package:shop/core/widgets/custom_text_field.dart';
 import 'package:shop/features/auth/login/presentation/manger/login_cubit/login_cubit.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -25,7 +26,7 @@ class LoginViewBody extends StatelessWidget {
         } else if (state is LoginSuccess) {
           AppNotifications.showSuccess(
             context,
-            'Welcome Back ${state.userModel.name ?? 'Guest'}',
+            context.tr.welcomeBackMsg(state.userModel.name ?? 'Guest'),
           );
           GoRouter.of(context).pushReplacement(AppRouterKeys.mainLayout);
         }
@@ -46,10 +47,10 @@ class LoginViewBody extends StatelessWidget {
                         context,
                       ).pushReplacement(AppRouterKeys.authScreen);
                     },
-                    child: SvgPicture.asset(AppSvgs.back),
+                    child: SvgPicture.asset(AppSvgs.back, matchTextDirection: true),
                   ),
                   SizedBox(height: 42.h),
-                  Text('Welcome\nBack!', style: AppTextStyles.textStyle34),
+                  Text(context.tr.welcomeBack, style: AppTextStyles.textStyle34),
                   SizedBox(height: 45.h),
                   CustomTextField(
                     validator: (String? p1) {
@@ -58,7 +59,7 @@ class LoginViewBody extends StatelessWidget {
                     controller: cubit.emailController,
                     keyboardType: TextInputType.emailAddress,
                     obscureText: false,
-                    hintText: 'Email',
+                    hintText: context.tr.email,
                     prefixIcon: SvgPicture.asset(AppSvgs.email),
                   ),
                   SizedBox(height: 22.h),
@@ -69,7 +70,7 @@ class LoginViewBody extends StatelessWidget {
                     controller: cubit.passwordController,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: cubit.isPassword,
-                    hintText: 'Password',
+                    hintText: context.tr.password,
                     prefixIcon: SvgPicture.asset(AppSvgs.password),
                     suffixIcon: GestureDetector(
                       onTap: () {
@@ -90,7 +91,7 @@ class LoginViewBody extends StatelessWidget {
                           onPressed: () {
                             state is LoginLoading ? null : cubit.login();
                           },
-                          text: 'Login',
+                          text: context.tr.login,
                         ),
                 ],
               ),

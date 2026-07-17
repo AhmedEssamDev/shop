@@ -158,4 +158,54 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bestSellers => 'Best Sellers';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get searchAnyProduct => 'Search any Product..';
+
+  @override
+  String get createAccount => 'Create an\naccount!';
+
+  @override
+  String get welcomeBack => 'Welcome\nBack!';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get createAccountBtn => 'Create Account';
+
+  @override
+  String welcomeBackMsg(Object name) {
+    return 'Welcome Back $name!';
+  }
+
+  @override
+  String get register => 'Register';
+
+  @override
+  String get authHeadline => 'You want\nAuthentic, here\nyou go!';
+
+  @override
+  String get authSubtitle => 'Find it here, buy it now!';
+
+  @override
+  String get agreeText => 'By clicking the';
+
+  @override
+  String get agreeRegister => ' Register ';
+
+  @override
+  String get agreeOffer => 'button, you agree\nto the public offer';
 }

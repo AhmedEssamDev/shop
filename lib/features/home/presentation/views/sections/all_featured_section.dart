@@ -38,7 +38,7 @@ class AllFeaturedSection extends StatelessWidget {
               Align(
                 alignment: AlignmentDirectional.topStart,
                 child: Padding(
-                  padding: REdgeInsets.only(left: 8.0),
+                  padding: REdgeInsetsDirectional.only(start: 8.0),
                   child: Text(
                     context.tr.bestSellers,
                     style: AppTextStyles.textStyle18.copyWith(

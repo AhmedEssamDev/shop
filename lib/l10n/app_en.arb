@@ -49,5 +49,21 @@
   "home": "Home",
   "items": "Items",
   "allFeatured": "All Featured",
-  "bestSellers": "Best Sellers"
+  "bestSellers": "Best Sellers",
+  "search": "Search",
+  "searchAnyProduct": "Search any Product..",
+  "createAccount": "Create an\naccount!",
+  "welcomeBack": "Welcome\nBack!",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "login": "Login",
+  "createAccountBtn": "Create Account",
+  "welcomeBackMsg": "Welcome Back {name}!",
+  "register": "Register",
+  "authHeadline": "You want\nAuthentic, here\nyou go!",
+  "authSubtitle": "Find it here, buy it now!",
+  "agreeText": "By clicking the",
+  "agreeRegister": " Register ",
+  "agreeOffer": "button, you agree\nto the public offer"
 }

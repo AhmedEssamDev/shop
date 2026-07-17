@@ -13,6 +13,7 @@ import 'package:shop/core/widgets/custom_snack_bar.dart';
 import 'package:shop/core/widgets/custom_text_field.dart';
 import 'package:shop/features/auth/register/presentation/manger/cubit/register_cubit.dart';
 import 'package:shop/features/auth/register/presentation/views/widgets/rich_text.dart';
+import 'package:shop/core/utils/context_extension.dart';
 
 class RegisterViewBody extends StatelessWidget {
   const RegisterViewBody();
@@ -42,10 +43,10 @@ class RegisterViewBody extends StatelessWidget {
                     onTap: () {
                       GoRouter.of(context).pop();
                     },
-                    child: SvgPicture.asset(AppSvgs.back),
+                    child: SvgPicture.asset(AppSvgs.back, matchTextDirection: true),
                   ),
                   SizedBox(height: 39.h),
-                  Text('Create an\naccount!', style: AppTextStyles.textStyle34),
+                  Text(context.tr.createAccount, style: AppTextStyles.textStyle34),
                   SizedBox(height: 33.h),
                   CustomTextField(
                     validator: (p0) {
@@ -54,7 +55,7 @@ class RegisterViewBody extends StatelessWidget {
                     controller: cubit.nameController,
                     keyboardType: TextInputType.name,
                     obscureText: false,
-                    hintText: 'Full Name',
+                    hintText: context.tr.fullName,
                     prefixIcon: SvgPicture.asset(AppSvgs.person),
                   ),
                   SizedBox(height: 10.h),
@@ -65,7 +66,7 @@ class RegisterViewBody extends StatelessWidget {
                     controller: cubit.phoneController,
                     keyboardType: TextInputType.phone,
                     obscureText: false,
-                    hintText: 'Phone',
+                    hintText: context.tr.phone,
                     prefixIcon: SvgPicture.asset(AppSvgs.phone),
                   ),
                   SizedBox(height: 10.h),
@@ -76,7 +77,7 @@ class RegisterViewBody extends StatelessWidget {
                     controller: cubit.emailController,
                     keyboardType: TextInputType.emailAddress,
                     obscureText: false,
-                    hintText: 'Email',
+                    hintText: context.tr.email,
                     prefixIcon: SvgPicture.asset(AppSvgs.email),
                   ),
                   SizedBox(height: 10.h),
@@ -89,7 +90,7 @@ class RegisterViewBody extends StatelessWidget {
                     controller: cubit.passwordController,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: cubit.isPassword1,
-                    hintText: 'Password',
+                    hintText: context.tr.password,
                     prefixIcon: SvgPicture.asset(AppSvgs.password),
                     suffixIcon: GestureDetector(
                       onTap: () {
@@ -113,7 +114,7 @@ class RegisterViewBody extends StatelessWidget {
                     controller: cubit.confirmPasswordController,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: cubit.isPassword2,
-                    hintText: 'Confirm Password',
+                    hintText: context.tr.confirmPassword,
                     prefixIcon: SvgPicture.asset(AppSvgs.password),
                     suffixIcon: GestureDetector(
                       onTap: () {
@@ -137,7 +138,7 @@ class RegisterViewBody extends StatelessWidget {
                     onPressed: () {
                       state is RegisterLoading ? null : cubit.register();
                     },
-                    text: 'Create Account',
+                    text: context.tr.createAccountBtn,
                   ),
                 ],
               ),

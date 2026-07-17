@@ -8,7 +8,7 @@ class CategoryShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: REdgeInsets.only(left: 8.0),
+      padding: REdgeInsetsDirectional.only(start: 8.0),
       child: Column(
         children: [
           CustomShimmer.circular(
