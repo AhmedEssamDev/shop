@@ -12,4 +12,5 @@ abstract class AppRouterKeys {
   static const String order = '/order';
   static const String cart = '/cart';
   static const String orderDetails = '/order_details';
+  static const String map = '/map';
 }

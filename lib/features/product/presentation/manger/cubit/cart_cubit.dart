@@ -106,4 +106,11 @@ class CartCubit extends Cubit<CartState> {
         jsonEncode(cartItems.map((item) => item.toJson()).toList());
     CacheHelper.setValue(CacheKeys.cartItems, encoded);
   }
+
+  String? selectedAddress; // متغير لتخزين العنوان
+
+  void updateAddress(String newAddress) {
+    selectedAddress = newAddress;
+    emit(CartAddressUpdated(newAddress)); 
+  }
 }
