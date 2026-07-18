@@ -5,7 +5,7 @@ import 'package:shop/core/widgets/custom_network_image.dart';
 class ImageManager extends StatefulWidget {
   final Widget unselectedImageBuilder;
   final Widget Function(String imagePath) selectedImageBuilder;
-  final String? currentImageUrl; // رابط الصورة من السيرفر
+  final String? currentImageUrl; 
   final void Function(String imagePath)? onImageSelected;
 
   const ImageManager({

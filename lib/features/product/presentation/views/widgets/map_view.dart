@@ -26,7 +26,6 @@ class MapScreenState extends State<MapScreen> {
 
     if (placemarks.isNotEmpty) {
       Placemark place = placemarks[0];
-      // التعامل مع القيم التي قد تكون null
       String street = place.street != null && place.street!.isNotEmpty ? "${place.street}, " : "";
       String locality = place.locality != null && place.locality!.isNotEmpty ? "${place.locality}, " : "";
       String country = place.country ?? "Unknown";
@@ -42,7 +41,6 @@ class MapScreenState extends State<MapScreen> {
       }
     }
   } catch (e) {
-    // هنا يتم معالجة الخطأ بدلاً من توقف التطبيق
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("لم نجد عنواناً في هذه المنطقة، حاول اختيار مكان آخر")),
@@ -57,8 +55,8 @@ class MapScreenState extends State<MapScreen> {
     return Scaffold(
       appBar: AppBar(title: Text("اختر الموقع")),
       body: GoogleMap(
-        initialCameraPosition: CameraPosition(target: LatLng(30.60, 32.26), zoom: 14), // موقع افتراضي
-        onTap: _selectLocation, // عند الضغط على أي مكان في الخريطة
+        initialCameraPosition: CameraPosition(target: LatLng(30.60, 32.26), zoom: 14), 
+        onTap: _selectLocation, 
         markers: _pickedLocation == null ? {} : {Marker(markerId: MarkerId('m1'), position: _pickedLocation!)},
       ),
     );
